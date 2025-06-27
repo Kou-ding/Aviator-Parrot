@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://40alu5xohgyc"]
+
+[ext_resource type="Texture2D" uid="uid://bibv50g0qndlc" path="res://assets/background/aviator-bird-background.png" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cyx00ihwjaeun" path="res://scenes/parrot.tscn" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://b3pftqlc47ec2" path="res://scripts/parrot.gd" id="3_iywne"]
+[ext_resource type="Texture2D" uid="uid://dfqqel3ksb4ya" path="res://assets/flappybird/pipe_red_bottom.png" id="4_p57ef"]
+[ext_resource type="Texture2D" uid="uid://xblk5fcyvasb" path="res://assets/flappybird/pipe_red_top.png" id="5_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://s21q2ldqpv7h" path="res://scenes/pipe.tscn" id="6_p57ef"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
+texture = ExtResource("4_p57ef")
+texture_region_size = Vector2i(26, 16)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+0:6/0 = 0
+0:7/0 = 0
+0:8/0 = 0
+0:9/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
+texture = ExtResource("5_u5sy4")
+texture_region_size = Vector2i(26, 16)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+0:6/0 = 0
+0:7/0 = 0
+0:8/0 = 0
+0:9/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vtaks"]
+sources/0 = SubResource("TileSetAtlasSource_gee14")
+sources/1 = SubResource("TileSetAtlasSource_0tnpc")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iywne"]
+distance = 7.0
+
+[node name="Game" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -2432.0
+offset_top = -951.0
+offset_right = 2543.0
+offset_bottom = 1850.0
+texture = ExtResource("1_yqjtg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, 5)
+
+[node name="Parrot" parent="." instance=ExtResource("2_lnu2h")]
+script = ExtResource("3_iywne")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+tile_set = SubResource("TileSet_vtaks")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(1, 361)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0, 427)
+shape = SubResource("WorldBoundaryShape2D_iywne")
+
+[node name="Pipe" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(675, -106)

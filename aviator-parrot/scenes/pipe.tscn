@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://s21q2ldqpv7h"]
+
+[ext_resource type="Script" uid="uid://uowjhfvosp6u" path="res://scripts/pipe.gd" id="1_8p0di"]
+[ext_resource type="Texture2D" uid="uid://xblk5fcyvasb" path="res://assets/flappybird/pipe_red_top.png" id="1_8x3ej"]
+[ext_resource type="Texture2D" uid="uid://dfqqel3ksb4ya" path="res://assets/flappybird/pipe_red_bottom.png" id="2_arpqm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arpqm"]
+size = Vector2(26.3333, 160.167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p0di"]
+size = Vector2(156, 960)
+
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_8p0di")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="UpperPipe" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, -729)
+scale = Vector2(6, 6)
+texture = ExtResource("1_8x3ej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.86102e-06, -728.5)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_arpqm")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="BottomPipe" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(0, 660.98)
+scale = Vector2(6, 6)
+texture = ExtResource("2_arpqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, 661)
+shape = SubResource("RectangleShape2D_8p0di")

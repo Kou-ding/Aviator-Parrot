@@ -33,12 +33,11 @@ offset_left = -65.7395
 offset_top = -94.0977
 offset_right = -25.7395
 offset_bottom = -54.0977
-scale = Vector2(3.36132, 5.8276)
+scale = Vector2(3.33449, 6.20686)
 color = Color(0, 0, 0, 0.262745)
 
 [node name="GameOverText" type="Sprite2D" parent="."]
 position = Vector2(1, -23)
-scale = Vector2(1, 1)
 texture = ExtResource("1_tbwuq")
 
 [node name="LeaderboardsIcon" type="Sprite2D" parent="."]

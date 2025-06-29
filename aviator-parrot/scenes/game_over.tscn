@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://c055ffm4cnwu6"]
+
+[ext_resource type="Script" uid="uid://kkkvltehd15p" path="res://scripts/game_over.gd" id="1_racf3"]
+[ext_resource type="Texture2D" uid="uid://cg57vxuowngv7" path="res://assets/flappybird/label_game_over.png" id="1_tbwuq"]
+[ext_resource type="Texture2D" uid="uid://57b2v5rkvgds" path="res://assets/flappybird/button_resume.png" id="2_racf3"]
+[ext_resource type="Texture2D" uid="uid://bvc5clcddml88" path="res://assets/flappybird/button_score_normal.png" id="3_7m3ot"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbwuq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_racf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7m3ot"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3hpu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_irg28"]
+
+[node name="GameOver" type="Control" node_paths=PackedStringArray("visible_ui")]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 528.0
+offset_top = 775.0
+offset_right = 528.0
+offset_bottom = 775.0
+scale = Vector2(8.53369, 8.53369)
+script = ExtResource("1_racf3")
+visible_ui = NodePath(".")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -65.7395
+offset_top = -94.0977
+offset_right = -25.7395
+offset_bottom = -54.0977
+scale = Vector2(3.36132, 5.8276)
+color = Color(0, 0, 0, 0.262745)
+
+[node name="GameOverText" type="Sprite2D" parent="."]
+position = Vector2(1, -23)
+scale = Vector2(1, 1)
+texture = ExtResource("1_tbwuq")
+
+[node name="LeaderboardsIcon" type="Sprite2D" parent="."]
+position = Vector2(-1, 19)
+scale = Vector2(0.637931, 0.637931)
+texture = ExtResource("3_7m3ot")
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -13.2417
+offset_top = 44.6466
+offset_right = 7.75835
+offset_bottom = 66.6466
+scale = Vector2(2.02901, 2.02901)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tbwuq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_racf3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7m3ot")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_v3hpu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_irg28")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_irg28")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_irg28")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_irg28")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_irg28")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_irg28")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_irg28")
+icon = ExtResource("2_racf3")
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

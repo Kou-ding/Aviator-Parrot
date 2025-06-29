@@ -1,37 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://s21q2ldqpv7h"]
+[gd_scene load_steps=7 format=3 uid="uid://s21q2ldqpv7h"]
 
 [ext_resource type="Script" uid="uid://uowjhfvosp6u" path="res://scripts/pipe.gd" id="1_8p0di"]
 [ext_resource type="Texture2D" uid="uid://xblk5fcyvasb" path="res://assets/flappybird/pipe_red_top.png" id="1_8x3ej"]
 [ext_resource type="Texture2D" uid="uid://dfqqel3ksb4ya" path="res://assets/flappybird/pipe_red_bottom.png" id="2_arpqm"]
+[ext_resource type="PackedScene" uid="uid://cnpqbchfyvdpg" path="res://scenes/killzone.tscn" id="3_ejsh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arpqm"]
-size = Vector2(26.3333, 160.167)
+size = Vector2(36.8333, 226.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8p0di"]
 size = Vector2(156, 960)
 
 [node name="Pipe" type="Node2D"]
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
 script = ExtResource("1_8p0di")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="UpperPipe" type="StaticBody2D" parent="."]
+position = Vector2(526, 848)
+scale = Vector2(0.899354, 0.899354)
 
-[node name="UpperPipe" type="Sprite2D" parent="StaticBody2D"]
+[node name="UpperPipeSprite" type="Sprite2D" parent="UpperPipe"]
 position = Vector2(0, -729)
-scale = Vector2(6, 6)
+scale = Vector2(8.485, 8.485)
 texture = ExtResource("1_8x3ej")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2.86102e-06, -728.5)
+[node name="Killzone" parent="UpperPipe" instance=ExtResource("3_ejsh2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPipe/Killzone"]
+position = Vector2(0, -729)
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_arpqm")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="BottomPipe" type="StaticBody2D" parent="."]
+position = Vector2(525, 998)
+scale = Vector2(1.27071, 1.27071)
 
-[node name="BottomPipe" type="Sprite2D" parent="StaticBody2D2"]
+[node name="BottomPipeSprite" type="Sprite2D" parent="BottomPipe"]
 position = Vector2(0, 660.98)
 scale = Vector2(6, 6)
 texture = ExtResource("2_arpqm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="Killzone" parent="BottomPipe" instance=ExtResource("3_ejsh2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe/Killzone"]
 position = Vector2(0, 661)
 shape = SubResource("RectangleShape2D_8p0di")
+
+[connection signal="game_over" from="UpperPipe/Killzone" to="." method="_on_killzone_game_over"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://40alu5xohgyc"]
+[gd_scene load_steps=24 format=3 uid="uid://40alu5xohgyc"]
 
 [ext_resource type="Script" uid="uid://cl0kjpkpkqsni" path="res://scripts/game.gd" id="1_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://bibv50g0qndlc" path="res://assets/background/aviator-bird-background.png" id="1_yqjtg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dfqqel3ksb4ya" path="res://assets/flappybird/pipe_red_bottom.png" id="8_dinhu"]
 [ext_resource type="Texture2D" uid="uid://c7mt5dqi5rjbc" path="res://assets/flappybird/label_flappy_bird.png" id="10_kvuet"]
 [ext_resource type="Texture2D" uid="uid://57b2v5rkvgds" path="res://assets/flappybird/button_resume.png" id="11_trtic"]
+[ext_resource type="Script" uid="uid://bjvhyrsclt48w" path="res://scripts/game_state.gd" id="14_trtic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 
@@ -30,7 +31,11 @@ size = Vector2(156, 960)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvuet"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir15t"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gee14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ca42v"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u5sy4")
@@ -169,6 +174,11 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_kvuet")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kvuet")
 icon = ExtResource("11_trtic")
 
+[node name="TouchScreenStartButton" type="TouchScreenButton" parent="MainMenu/StartButton"]
+position = Vector2(6.55948, 10.8551)
+scale = Vector2(0.716273, 0.788971)
+shape = SubResource("RectangleShape2D_ir15t")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause" type="Control" parent="CanvasLayer"]
@@ -204,11 +214,23 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_gee14")
 keep_pressed_outside = true
 icon = ExtResource("6_u5sy4")
 
+[node name="TouchScreenPauseButton" type="TouchScreenButton" parent="CanvasLayer/Pause/PauseButton"]
+position = Vector2(6.41142, 10.9978)
+scale = Vector2(0.707865, 0.691589)
+shape = SubResource("RectangleShape2D_ca42v")
+
+[node name="GameState" type="Node" parent="."]
+script = ExtResource("14_trtic")
+
 [connection signal="game_over" from="Floor/Killzone" to="GameOver" method="_on_killzone_game_over"]
 [connection signal="game_over" from="Pipe/UpperPipe2/Killzone" to="GameOver" method="_on_killzone_game_over"]
 [connection signal="game_over" from="Pipe/BottomPipe2/Killzone" to="GameOver" method="_on_killzone_game_over"]
 [connection signal="game_over" from="Pipe2/UpperPipe2/Killzone" to="GameOver" method="_on_killzone_game_over"]
 [connection signal="game_over" from="Pipe2/BottomPipe2/Killzone" to="GameOver" method="_on_killzone_game_over"]
 [connection signal="restart" from="GameOver" to="." method="_on_game_over_restart"]
+[connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/StartButton/TouchScreenStartButton" to="." method="_on_touch_screen_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseButton" to="CanvasLayer/Pause" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/PauseButton/TouchScreenPauseButton" to="CanvasLayer/Pause" method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/PauseButton/TouchScreenPauseButton" to="CanvasLayer/Pause" method="_on_touch_screen_pause_button_pressed"]

@@ -20,6 +20,12 @@ func _on_restart_button_pressed() -> void:
 	touch_to_jump.visible = true
 	touch_to_jump.process_mode = Node.PROCESS_MODE_INHERIT
 
+func _on_touch_screen_button_pressed() -> void:
+	restart.emit()
+	# Re-enable jump button
+	touch_to_jump.visible = true
+	touch_to_jump.process_mode = Node.PROCESS_MODE_INHERIT
+	
 func _on_killzone_game_over() -> void:
 	get_tree().paused = true
 	pause.hide()

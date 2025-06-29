@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c055ffm4cnwu6"]
+[gd_scene load_steps=11 format=3 uid="uid://c055ffm4cnwu6"]
 
 [ext_resource type="Script" uid="uid://kkkvltehd15p" path="res://scripts/game_over.gd" id="1_racf3"]
 [ext_resource type="Texture2D" uid="uid://cg57vxuowngv7" path="res://assets/flappybird/label_game_over.png" id="1_tbwuq"]
@@ -14,6 +14,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3hpu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_irg28"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_racf3"]
 
 [node name="GameOver" type="Control" node_paths=PackedStringArray("visible_ui")]
 z_index = 1
@@ -65,4 +67,10 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_irg28")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_irg28")
 icon = ExtResource("2_racf3")
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="RestartButton"]
+position = Vector2(6.35293, 11.0887)
+scale = Vector2(0.744982, 0.753398)
+shape = SubResource("RectangleShape2D_racf3")
+
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="RestartButton/TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

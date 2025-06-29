@@ -13,7 +13,11 @@ config_version=5
 config/name="Aviator Parrot"
 run/main_scene="uid://40alu5xohgyc"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://dd0be1y15gcsl"
+
+[autoload]
+
+GameState="*res://scripts/game_state.gd"
 
 [display]
 

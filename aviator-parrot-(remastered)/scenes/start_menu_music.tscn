@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://lutmrdr37s3w"]
+
+[ext_resource type="AudioStream" uid="uid://d18k42a01kbqf" path="res://assets/music/JDSherbert - Nostalgia Music Pack - Gameboy & A Long Car Journey.mp3" id="1_sjb6t"]
+
+[node name="Start_Menu_Music" type="AudioStreamPlayer" unique_id=1472667189]
+stream = ExtResource("1_sjb6t")
+autoplay = true
+parameters/looping = true

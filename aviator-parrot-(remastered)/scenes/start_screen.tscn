@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cd2a37nbp427v" path="res://scripts/start_screen.gd" id="1_o30b1"]
 [ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="3_ws7p0"]
 [ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="4_r2jwc"]
+[ext_resource type="AudioStream" uid="uid://bl8p4l8n6cj73" path="res://assets/music/button_sfx.wav" id="6_5pab1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ecdxc"]
 texture = ExtResource("1_5pab1")
@@ -132,6 +133,9 @@ theme_override_font_sizes/font_size = 20
 text = "Quit"
 icon = SubResource("AtlasTexture_ws7p0")
 expand_icon = true
+
+[node name="Button_Sound" type="AudioStreamPlayer" parent="." unique_id=660652024]
+stream = ExtResource("6_5pab1")
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]

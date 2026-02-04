@@ -13,6 +13,7 @@ func _ready() -> void:
 	score = 0
 	num_crystals = 0
 	new_game()
+	MusicManager.play_game_music()
 	$GameOver.hide()
 	$PauseMenu.hide()
 	$Killzone.game_over.connect(_on_game_over)
@@ -38,6 +39,7 @@ func _on_passed() -> void:
 	score = score + 1
 	
 func _on_game_over() -> void:
+	MusicManager.stop()
 	Utils.update_leaderboard(score)
 	var best_scores = Utils.load_leaderboard()
 	

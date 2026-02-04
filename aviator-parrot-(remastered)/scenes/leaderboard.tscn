@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://di220dpy2g04j" path="res://assets/bg.png" id="2_jfen3"]
 [ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="3_6lrio"]
 [ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="4_ldk02"]
+[ext_resource type="AudioStream" uid="uid://bl8p4l8n6cj73" path="res://assets/music/button_sfx.wav" id="5_jfen3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mtsy5"]
 texture = ExtResource("2_jfen3")
@@ -78,5 +79,8 @@ theme_override_constants/outline_size = 25
 theme_override_fonts/normal_font = ExtResource("4_ldk02")
 theme_override_font_sizes/normal_font_size = 40
 horizontal_alignment = 1
+
+[node name="Button_Sound" type="AudioStreamPlayer" parent="." unique_id=1322112018]
+stream = ExtResource("5_jfen3")
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

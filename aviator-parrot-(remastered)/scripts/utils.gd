@@ -37,12 +37,11 @@ static func format_numbered_list(array: Array) -> String:
 	for i in range(array.size()):
 		var number = i + 1  # Start counting from 1
 		var item = str(array[i])  # Convert to string in case items aren't strings
-		result += str(number) + ". " + item
+		result += str(number) + ". " + item + " points"
 
 		# Add newline except for last item
 		if i < array.size() - 1:
 			result += "\n"
-	
 	return result
 	
 static func format_numbered_list_shortVer(array: Array) -> String:
@@ -51,7 +50,7 @@ static func format_numbered_list_shortVer(array: Array) -> String:
 	for i in range(3):
 		var number = i + 1  # Start counting from 1
 		var item = str(array[i])  # Convert to string in case items aren't strings
-		result += str(number) + ". " + item
+		result += str(number) + ". " + item + " points"
 
 		# Add newline except for last item
 		if i < array.size() - 1:

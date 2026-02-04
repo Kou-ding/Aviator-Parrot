@@ -16,21 +16,11 @@
 atlas = ExtResource("9_0tnpc")
 region = Rect2(192, 0, 32, 32)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
-bg_color = Color(0.0912, 0.08700001, 0.15, 0.78431374)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-shadow_size = 10
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tnpc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtaks"]
-bg_color = Color(0.1992, 0.192, 0.3, 0.78431374)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-shadow_size = 10
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtaks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvpfn"]
 
 [node name="Game" type="Node2D" unique_id=798599299]
 script = ExtResource("1_lnu2h")
@@ -55,7 +45,32 @@ autostart = true
 position = Vector2(376, 1120)
 shape = SubResource("WorldBoundaryShape2D_lbhrr")
 
-[node name="GameOver" parent="." unique_id=1469592536 instance=ExtResource("5_iywne")]
+[node name="TapToJump" type="Control" parent="." unique_id=1029073387]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 184.0
+offset_right = 696.0
+offset_bottom = 1096.0
+
+[node name="Instructions" type="Label" parent="TapToJump" unique_id=63200945]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -27.0
+offset_right = 116.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.105882354, 0.09803922, 0.19607843, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("6_dinhu")
+theme_override_font_sizes/font_size = 30
+text = "Tap to jump"
 
 [node name="Score" type="Label" parent="." unique_id=765185474]
 z_index = 1
@@ -75,8 +90,6 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 script = ExtResource("7_kvuet")
 
-[node name="PauseMenu" parent="." unique_id=1796569766 instance=ExtResource("8_gee14")]
-
 [node name="PauseButton" type="Button" parent="." unique_id=2127580544]
 z_index = 2
 offset_left = 568.0
@@ -88,16 +101,17 @@ expand_icon = true
 
 [node name="JumpButton" type="Button" parent="." unique_id=1799554950]
 z_index = 1
-offset_left = 392.0
-offset_top = 1144.0
-offset_right = 704.0
-offset_bottom = 1264.0
-theme_override_fonts/font = ExtResource("6_dinhu")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_0tnpc")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vtaks")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0tnpc")
-text = "Jump"
+offset_left = 8.0
+offset_top = 168.0
+offset_right = 712.0
+offset_bottom = 1104.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0tnpc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vtaks")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="GameOver" parent="." unique_id=1469592536 instance=ExtResource("5_iywne")]
+
+[node name="PauseMenu" parent="." unique_id=1796569766 instance=ExtResource("8_gee14")]
 
 [connection signal="timeout" from="CrystalSpawner" to="." method="_on_crystal_spawner_timeout"]
 [connection signal="game_over" from="Killzone" to="." method="_on_killzone_game_over"]

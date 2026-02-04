@@ -3,27 +3,31 @@ extends AudioStreamPlayer
 const start_music = preload("uid://d18k42a01kbqf")
 const game_music = preload("uid://bwp24ix5ww824")
 
-var current_music_name: String = ""
-
 # Called when the node enters the scene tree for the first time.
-func _play_music(music: AudioStream, music_name: String, volume = 0.0):
-	if current_music_name == music_name and playing:
-		return  # Already playing this music
-
+func _play_music(music: AudioStream, volume = 0.0):
+	# Do nothing if the same song is selected and is currently playing
+	if stream == music and playing:
+		return
 	stream = music
 	volume_db = volume
-	current_music_name = music_name
 	play()
+
+func play_FX(stream: AudioStream, volume = 0.0):
+	var fx_player = AudioStreamPlayer.new()
+	fx_player.stream = stream
+	fx_player.name = "FX_PLAYER"
+	fx_player.volume_db = volume
+	add_child(fx_player)
+	fx_player.play()
+	# Wait until fx finished to free object
+	await fx_player.finished
+	fx_player.queue_free()
 
 func stop_music():
 	stop()
-	current_music_name = ""
-
-func get_current_music() -> String:
-	return current_music_name
 
 func play_start_music():
-	_play_music(start_music, "start")
+	_play_music(start_music)
 	
 func play_game_music():
-	_play_music(game_music, "game")
+	_play_music(game_music)

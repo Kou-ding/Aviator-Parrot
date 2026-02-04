@@ -6,18 +6,27 @@ var score
 var num_crystals
 
 func new_game():
+	# Player starting position
 	$Parrot.start($StartPosition.position)
+	# Game music
+	MusicManager.play_game_music()
+	# Hide menus
+	$GameOver.hide()
+	$PauseMenu.hide()
+	# Connect signals 
+	$Killzone.game_over.connect(_on_game_over)
+	$PauseMenu.undarken.connect(_on_unpause)
+	# Show Instructions Timer
+	await get_tree().create_timer(2.0).timeout
+	var instructions = get_node_or_null("TapToJump/Instructions")
+	if instructions:
+		instructions.queue_free()
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	score = 0
 	num_crystals = 0
 	new_game()
-	MusicManager.play_game_music()
-	$GameOver.hide()
-	$PauseMenu.hide()
-	$Killzone.game_over.connect(_on_game_over)
-	$PauseMenu.undarken.connect(_on_unpause)
 
 func _on_crystal_spawner_timeout() -> void:
 	var crystals = crystals_scene.instantiate()
@@ -39,11 +48,17 @@ func _on_passed() -> void:
 	score = score + 1
 	
 func _on_game_over() -> void:
+	var instructions = get_node_or_null("TapToJump/Instructions")
+	if instructions:
+		instructions.queue_free()
 	MusicManager.stop()
+	
+	# Display Leaderboard
 	Utils.update_leaderboard(score)
 	var best_scores = Utils.load_leaderboard()
-	
 	$GameOver/Highscores.text = str(Utils.format_numbered_list_shortVer(best_scores))
+	
+	# Darken bg and hide ui elements
 	darken_scene()
 	$PauseButton.hide()
 	$GameOver.show()
@@ -55,6 +70,7 @@ func _on_pause_button_pressed() -> void:
 	$PauseMenu.show()
 	$PauseButton.hide()
 	$JumpButton.hide()
+	$JumpButton.disabled = true
 	get_tree().paused = true
 	
 func darken_scene() -> void:
@@ -73,6 +89,8 @@ func _on_unpause() -> void:
 	undarken_scene()
 	$PauseButton.show()
 	$JumpButton.show()
+	$JumpButton.disabled = false
+	
 
 func _on_jump_button_pressed() -> void:
 	$Parrot.game_jump_button_pressed()

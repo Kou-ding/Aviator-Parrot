@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://3dcbsjeolpjp"]
+
+[ext_resource type="Texture2D" uid="uid://di220dpy2g04j" path="res://assets/bg.png" id="1_5pab1"]
+[ext_resource type="Script" uid="uid://cd2a37nbp427v" path="res://scripts/start_screen.gd" id="1_o30b1"]
+[ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="3_ws7p0"]
+[ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="4_r2jwc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ecdxc"]
+texture = ExtResource("1_5pab1")
+modulate_color = Color(0.65, 0.65, 0.65, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm208"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pab1"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o30b1"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka6nf"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws7p0"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(256, 0, 32, 32)
+
+[node name="StartScreen" type="Control" unique_id=108913307]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o30b1")
+
+[node name="Background" type="Panel" parent="." unique_id=1396693583]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ecdxc")
+
+[node name="Logo" type="Label" parent="." unique_id=2093236876]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -554.0
+offset_right = 360.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.49411765, 0.078431375, 0.2784314, 1)
+theme_override_colors/font_outline_color = Color(0.105882354, 0.09803922, 0.19607843, 1)
+theme_override_constants/line_spacing = -60
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_ws7p0")
+theme_override_font_sizes/font_size = 63
+text = "Aviator
+Parrot"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1413753211]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -160.0
+offset_right = 71.18973
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.555, 1.555)
+size_flags_horizontal = 8
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=1559565763]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_ws7p0")
+theme_override_font_sizes/font_size = 20
+text = "Play"
+icon = SubResource("AtlasTexture_hm208")
+expand_icon = true
+
+[node name="LeaderboardButton" type="Button" parent="VBoxContainer" unique_id=196671158]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_ws7p0")
+theme_override_font_sizes/font_size = 20
+text = "Leaderboard"
+icon = SubResource("AtlasTexture_5pab1")
+expand_icon = true
+
+[node name="ShopButton" type="Button" parent="VBoxContainer" unique_id=396255040]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_ws7p0")
+theme_override_font_sizes/font_size = 20
+text = "Shop"
+icon = SubResource("AtlasTexture_o30b1")
+expand_icon = true
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=607363573]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_ws7p0")
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+icon = SubResource("AtlasTexture_ka6nf")
+expand_icon = true
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=281037551]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_ws7p0")
+theme_override_font_sizes/font_size = 20
+text = "Quit"
+icon = SubResource("AtlasTexture_ws7p0")
+expand_icon = true
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

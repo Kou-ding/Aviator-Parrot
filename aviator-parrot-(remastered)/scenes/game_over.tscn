@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://corxrll4weuk2"]
+
+[ext_resource type="Script" uid="uid://bg1nekjh0y2py" path="res://scripts/game_over.gd" id="1_racf3"]
+[ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="2_7m3ot"]
+[ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="3_tbwuq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_racf3"]
+atlas = ExtResource("3_tbwuq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m3ot"]
+atlas = ExtResource("3_tbwuq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbwuq"]
+texture = ExtResource("3_tbwuq")
+region_rect = Rect2(96, 0, 32, 32)
+
+[node name="GameOver" type="Control" unique_id=1469592536]
+process_mode = 2
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_racf3")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1281089123]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 888.0
+offset_right = 243.0
+offset_bottom = 928.0
+scale = Vector2(4, 4)
+size_flags_horizontal = 0
+theme_override_constants/h_separation = 35
+columns = 2
+
+[node name="MenuButton" type="Button" parent="GridContainer" unique_id=1874069755]
+layout_mode = 2
+icon = SubResource("AtlasTexture_racf3")
+icon_alignment = 1
+
+[node name="ReplayButton" type="Button" parent="GridContainer" unique_id=1456121262]
+layout_mode = 2
+icon = SubResource("AtlasTexture_7m3ot")
+
+[node name="GridContainer2" type="GridContainer" parent="." unique_id=1091090255]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 504.0
+offset_right = 587.0
+offset_bottom = 589.0
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="Label2" type="Label" parent="GridContainer2" unique_id=664174267]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.12941177, 0.12156863, 0.23921569, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("2_7m3ot")
+theme_override_font_sizes/font_size = 30
+text = "Leaderboard"
+
+[node name="Panel" type="Panel" parent="GridContainer2" unique_id=1542056755]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tbwuq")
+
+[node name="Label" type="Label" parent="." unique_id=173006666]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 304.0
+offset_right = 588.0
+offset_bottom = 444.0
+theme_override_colors/font_color = Color(0.49411765, 0.078431375, 0.2784314, 1)
+theme_override_colors/font_outline_color = Color(0.12941177, 0.12156863, 0.23921569, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("2_7m3ot")
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+
+[node name="Highscores" type="RichTextLabel" parent="." unique_id=1189675332]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 600.0
+offset_right = 384.0
+offset_bottom = 840.0
+theme_override_colors/font_outline_color = Color(0.105882354, 0.09803922, 0.19607843, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("2_7m3ot")
+theme_override_font_sizes/normal_font_size = 25
+text = "1.
+2.
+3."
+horizontal_alignment = 1
+
+[connection signal="pressed" from="GridContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GridContainer/ReplayButton" to="." method="_on_replay_button_pressed"]

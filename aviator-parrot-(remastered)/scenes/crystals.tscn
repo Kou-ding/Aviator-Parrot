@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://csqg5wc7xacpa"]
+
+[ext_resource type="Script" uid="uid://bf4e402ukmdgn" path="res://scripts/crystals.gd" id="1_rf1fc"]
+[ext_resource type="PackedScene" uid="uid://bgniix12i2k4n" path="res://scenes/killzone.tscn" id="2_ekfrm"]
+[ext_resource type="Texture2D" uid="uid://dl2n2ynsqbm5p" path="res://assets/crystal-advanced.png" id="3_ij40q"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yrcib"]
+
+[node name="Crystals" type="Node2D" unique_id=1315559802]
+script = ExtResource("1_rf1fc")
+
+[node name="Killzone" parent="." unique_id=522540604 instance=ExtResource("2_ekfrm")]
+position = Vector2(322, 62)
+
+[node name="Sprite2D" type="Sprite2D" parent="Killzone" unique_id=1348883421]
+position = Vector2(-311.2701, 86.13151)
+rotation = 3.1415927
+scale = Vector2(5.8, 5.8)
+texture = ExtResource("3_ij40q")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Killzone" unique_id=961867173]
+position = Vector2(113.02991, -202.2685)
+scale = Vector2(1.3213735, 1.3213735)
+polygon = PackedVector2Array(-280, -23, -212, -22, -119, 67, -105, 111, -128, 149, -221, 183, -155, 327, -204, 493, -358, 393, -393, 220, -427, 291, -505, 396, -554, 240, -495, 75, -528, 52, -514, 8, -431, -26, -360, -18, -340, -42, -315, -45, -298, -20)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Killzone" unique_id=893881600]
+position = Vector2(-307.99747, 1059.6511)
+scale = Vector2(5.8, 5.8)
+texture = ExtResource("3_ij40q")
+flip_h = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Killzone" unique_id=904689747]
+position = Vector2(-307.99747, 1059.6511)
+scale = Vector2(5.824631, 5.824631)
+polygon = PackedVector2Array(24.318182, -60.90909, -11.136364, -39.09091, -16.136362, -1.3636322, -26.590908, -21.818176, -42.272724, -38.636368, -52.272724, -5, -39.772724, 35.000015, -44.545452, 36.363632, -44.31818, 47.954544, -23.40909, 55.22728, -8.40909, 54.090897, -4.090909, 59.77272, 0.909091, 59.77272, 7.0454545, 54.090897, 24.090908, 54.545456, 40.90909, 41.363632, 47.272728, 32.72728, 48.181816, 23.863632, 38.863636, 13.863632, 22.727272, 8.636368, 37.272728, -25.227264)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=791308667]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1760606884]
+position = Vector2(47, 644)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_yrcib")
+
+[node name="Selfdestruct" type="Timer" parent="." unique_id=303858804]
+wait_time = 4.0
+autostart = true
+
+[connection signal="passed" from="." to="." method="_on_passed"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="timeout" from="Selfdestruct" to="." method="_on_selfdestruct_timeout"]

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ia0siinuq2au"]
+
+[ext_resource type="Texture2D" uid="uid://d3mqpa6v02ex3" path="res://assets/mc.png" id="1_qkfhc"]
+[ext_resource type="Script" uid="uid://cyod8xrikge4m" path="res://scripts/parrot.gd" id="1_w755j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w755j"]
+atlas = ExtResource("1_qkfhc")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6g64"]
+atlas = ExtResource("1_qkfhc")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vda7l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w755j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6g64")
+}],
+"loop": false,
+"name": &"fly",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nuuxd"]
+
+[node name="Parrot" type="CharacterBody2D" unique_id=2088057206]
+script = ExtResource("1_w755j")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175572675]
+scale = Vector2(0.255, 0.255)
+sprite_frames = SubResource("SpriteFrames_vda7l")
+animation = &"fly"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1664157311]
+position = Vector2(-8.56, -6.535)
+scale = Vector2(1.325, 1.325)
+shape = SubResource("CircleShape2D_nuuxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=169541893]

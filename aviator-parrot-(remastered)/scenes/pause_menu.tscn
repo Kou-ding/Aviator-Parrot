@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://couq435ra4k8a"]
+
+[ext_resource type="Script" uid="uid://1blfd4jgc5l3" path="res://scripts/pause_menu.gd" id="1_m0klm"]
+[ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="1_r8yp4"]
+[ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="2_m0klm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aicil"]
+atlas = ExtResource("2_m0klm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn4bt"]
+atlas = ExtResource("2_m0klm")
+region = Rect2(160, 0, 32, 32)
+
+[node name="Pause" type="Control" unique_id=1796569766]
+process_mode = 2
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m0klm")
+
+[node name="Label" type="Label" parent="." unique_id=174312361]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 304.0
+offset_right = 508.0
+offset_bottom = 444.0
+theme_override_colors/font_color = Color(0.49411765, 0.078431375, 0.2784314, 1)
+theme_override_colors/font_outline_color = Color(0.105882354, 0.09803922, 0.19607843, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("1_r8yp4")
+theme_override_font_sizes/font_size = 50
+text = "Paused"
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1340029004]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 896.0
+offset_right = 235.0
+offset_bottom = 936.0
+scale = Vector2(4, 4)
+theme_override_constants/h_separation = 35
+columns = 2
+
+[node name="Menu" type="Button" parent="GridContainer" unique_id=328716428]
+layout_mode = 2
+icon = SubResource("AtlasTexture_aicil")
+
+[node name="Resume" type="Button" parent="GridContainer" unique_id=588624130]
+layout_mode = 2
+icon = SubResource("AtlasTexture_jn4bt")
+
+[connection signal="pressed" from="GridContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="GridContainer/Resume" to="." method="_on_resume_pressed"]

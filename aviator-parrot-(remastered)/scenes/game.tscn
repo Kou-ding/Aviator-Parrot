@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://dyphc34eroiyt"]
+
+[ext_resource type="Script" uid="uid://dwpo2d3ckaqc6" path="res://scripts/game.gd" id="1_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://di220dpy2g04j" path="res://assets/bg.png" id="3_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://ia0siinuq2au" path="res://scenes/parrot.tscn" id="4_vtaks"]
+[ext_resource type="PackedScene" uid="uid://corxrll4weuk2" path="res://scenes/game_over.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://bgniix12i2k4n" path="res://scenes/killzone.tscn" id="5_kvpfn"]
+[ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="6_dinhu"]
+[ext_resource type="Script" uid="uid://ccrlaex51810v" path="res://scripts/score.gd" id="7_kvuet"]
+[ext_resource type="PackedScene" uid="uid://couq435ra4k8a" path="res://scenes/pause_menu.tscn" id="8_gee14"]
+[ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="9_0tnpc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtaks"]
+atlas = ExtResource("9_0tnpc")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
+bg_color = Color(0.0912, 0.08700001, 0.15, 0.78431374)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtaks"]
+bg_color = Color(0.1992, 0.192, 0.3, 0.78431374)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_size = 10
+
+[node name="Game" type="Node2D" unique_id=798599299]
+script = ExtResource("1_lnu2h")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1555652795]
+position = Vector2(360, 640)
+scale = Vector2(0.80222225, 0.8022222)
+texture = ExtResource("3_0tnpc")
+
+[node name="StartPosition" type="Marker2D" parent="." unique_id=279717237]
+position = Vector2(192, 576)
+
+[node name="Parrot" parent="." unique_id=2088057206 instance=ExtResource("4_vtaks")]
+
+[node name="CrystalSpawner" type="Timer" parent="." unique_id=1436650371]
+wait_time = 2.0
+autostart = true
+
+[node name="Killzone" parent="." unique_id=522540604 instance=ExtResource("5_kvpfn")]
+
+[node name="Floor" type="CollisionShape2D" parent="Killzone" unique_id=1653231303]
+position = Vector2(376, 1120)
+shape = SubResource("WorldBoundaryShape2D_lbhrr")
+
+[node name="GameOver" parent="." unique_id=1469592536 instance=ExtResource("5_iywne")]
+
+[node name="Score" type="Label" parent="." unique_id=765185474]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 344.0
+offset_right = 384.00006
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("6_dinhu")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+script = ExtResource("7_kvuet")
+
+[node name="PauseMenu" parent="." unique_id=1796569766 instance=ExtResource("8_gee14")]
+
+[node name="PauseButton" type="Button" parent="." unique_id=2127580544]
+z_index = 2
+offset_left = 568.0
+offset_top = 16.0
+offset_right = 704.0
+offset_bottom = 152.0
+icon = SubResource("AtlasTexture_vtaks")
+expand_icon = true
+
+[node name="JumpButton" type="Button" parent="." unique_id=1799554950]
+z_index = 1
+offset_left = 392.0
+offset_top = 1144.0
+offset_right = 704.0
+offset_bottom = 1264.0
+theme_override_fonts/font = ExtResource("6_dinhu")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_0tnpc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vtaks")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0tnpc")
+text = "Jump"
+
+[connection signal="timeout" from="CrystalSpawner" to="." method="_on_crystal_spawner_timeout"]
+[connection signal="game_over" from="Killzone" to="." method="_on_killzone_game_over"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="JumpButton" to="." method="_on_jump_button_pressed"]

@@ -1,0 +1,76 @@
+extends Node2D
+
+var crystals_scene = preload("res://scenes/crystals.tscn")
+
+var score
+var num_crystals
+
+func new_game():
+	$Parrot.start($StartPosition.position)
+	
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	score = 0
+	num_crystals = 0
+	new_game()
+	$GameOver.hide()
+	$PauseMenu.hide()
+	$Killzone.game_over.connect(_on_game_over)
+	$PauseMenu.undarken.connect(_on_unpause)
+
+func _on_crystal_spawner_timeout() -> void:
+	var crystals = crystals_scene.instantiate()
+	num_crystals = num_crystals+1
+	print("crystals:",num_crystals)
+	crystals.position.x = 1000
+	crystals.position.y = -150+randi()%350
+	add_child(crystals)
+	crystals.add_to_group("crystals")
+	
+	# Check if the player passed a crystal structure
+	crystals.passed.connect(_on_passed)
+	
+	# Connect the crystals' killzone signal and process it on the _on_game_over function 
+	var killzone = crystals.get_node("Killzone")
+	killzone.game_over.connect(_on_game_over)
+
+func _on_passed() -> void:
+	score = score + 1
+	
+func _on_game_over() -> void:
+	Utils.update_leaderboard(score)
+	var best_scores = Utils.load_leaderboard()
+	
+	$GameOver/Highscores.text = str(Utils.format_numbered_list_shortVer(best_scores))
+	darken_scene()
+	$PauseButton.hide()
+	$GameOver.show()
+	$JumpButton.hide()
+	get_tree().paused = true
+
+func _on_pause_button_pressed() -> void:
+	darken_scene()
+	$PauseMenu.show()
+	$PauseButton.hide()
+	$JumpButton.hide()
+	get_tree().paused = true
+	
+func darken_scene() -> void:
+	$Background.modulate = Color(0.5, 0.5, 0.5)
+	$Parrot.modulate = Color(0.5, 0.5, 0.5)
+	for crystal in get_tree().get_nodes_in_group("crystals"):
+		crystal.modulate = Color(0.5, 0.5, 0.5)
+		
+func undarken_scene() -> void:
+	$Background.modulate = Color(1, 1, 1)
+	$Parrot.modulate = Color(1, 1, 1)
+	for crystal in get_tree().get_nodes_in_group("crystals"):
+		crystal.modulate = Color(1, 1, 1)
+
+func _on_unpause() -> void:
+	undarken_scene()
+	$PauseButton.show()
+	$JumpButton.show()
+
+func _on_jump_button_pressed() -> void:
+	$Parrot.game_jump_button_pressed()

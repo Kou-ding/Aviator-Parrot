@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump
 	if Input.is_action_just_pressed("jump"):	
 		velocity.y = JUMP_VELOCITY
+		$FlapWings.play()
 	move_and_slide()
 
 func start(pos):

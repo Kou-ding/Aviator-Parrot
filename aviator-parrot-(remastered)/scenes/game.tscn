@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ccrlaex51810v" path="res://scripts/score.gd" id="7_kvuet"]
 [ext_resource type="PackedScene" uid="uid://couq435ra4k8a" path="res://scenes/pause_menu.tscn" id="8_gee14"]
 [ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="9_0tnpc"]
+[ext_resource type="AudioStream" uid="uid://cls25ho5uqltr" path="res://assets/music/game-die.mp3" id="10_vtaks"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 
@@ -151,6 +152,11 @@ offset_right = 536.0
 offset_bottom = 1024.0
 grow_horizontal = 1
 grow_vertical = 0
+
+[node name="LoseSFX" type="AudioStreamPlayer" parent="." unique_id=90039508]
+process_mode = 3
+stream = ExtResource("10_vtaks")
+bus = &"SFX"
 
 [connection signal="timeout" from="CrystalSpawner" to="." method="_on_crystal_spawner_timeout"]
 [connection signal="game_over" from="Killzone" to="." method="_on_killzone_game_over"]

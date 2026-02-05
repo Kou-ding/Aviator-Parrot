@@ -51,12 +51,16 @@ func _on_passed() -> void:
 	score = score + 1
 	
 func _on_game_over() -> void:
+	# Remove instructions if player lost too early
 	var instructions = get_node_or_null("TapToJump/Instructions")
 	var tap_area = get_node_or_null("TapToJump/TapArea")
 	if instructions:
 		instructions.queue_free()
 	if tap_area:
 		tap_area.queue_free()
+		
+	# Play lose sound and stop music
+	$LoseSFX.play()
 	MusicManager.stop()
 	
 	# Display Leaderboard

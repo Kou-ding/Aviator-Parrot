@@ -38,8 +38,8 @@ region = Rect2(192, 0, 32, 32)
 script = ExtResource("1_lnu2h")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1555652795]
-position = Vector2(360, 640)
-scale = Vector2(0.80222225, 0.8022222)
+position = Vector2(359.5, 639.1111)
+scale = Vector2(0.80111116, 0.8011111)
 texture = ExtResource("3_0tnpc")
 
 [node name="StartPosition" type="Marker2D" parent="." unique_id=279717237]

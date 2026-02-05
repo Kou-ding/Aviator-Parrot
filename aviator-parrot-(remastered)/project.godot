@@ -32,7 +32,6 @@ MusicManager="*uid://esjuhe6p7c3e"
 window/size/viewport_width=720
 window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 
 [input]

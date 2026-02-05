@@ -4,6 +4,7 @@ class_name Utils
 
 const LEADERBOARD_SAVE_PATH := "user://leaderboard.save"
 const CURRENCY_SAVE_PATH := "user://currency.save"
+const SETTINGS_SAVE_PATH := "user://settings.save"
 const MAX_SCORES := 8
 
 static func load_leaderboard() -> Array:
@@ -75,3 +76,30 @@ static func format_numbered_list_shortVer(array: Array) -> String:
 			result += "\n"
 	
 	return result
+	
+static func save_settings_before_quitting():
+	var current_music_volume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
+	var current_sfx_volume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
+	save_settings(current_music_volume, current_sfx_volume)
+
+static func load_settings_after_startup():
+	var previous_volume = load_settings()
+	var previous_music_volume = previous_volume[0]
+	var previous_sfx_volume = previous_volume[1]
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),previous_music_volume)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),previous_sfx_volume)
+	
+static func save_settings(music_volume,sfx_volume) -> void:
+	var file = FileAccess.open(SETTINGS_SAVE_PATH, FileAccess.WRITE)
+	if file:
+		var data = [music_volume, sfx_volume]
+		file.store_var(data)
+
+static func load_settings() -> Array:
+	if not FileAccess.file_exists(SETTINGS_SAVE_PATH):
+		return [0,0]
+	var file = FileAccess.open(SETTINGS_SAVE_PATH, FileAccess.READ)
+	if file:
+		var data = file.get_var()
+		return data
+	return [0,0]

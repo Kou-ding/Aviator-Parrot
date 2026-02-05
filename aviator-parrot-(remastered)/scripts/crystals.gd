@@ -8,8 +8,13 @@ signal passed
 func _process(delta: float):
 	position.x -= crystals_speed*delta
 
-func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	passed.emit()
-
 func _on_selfdestruct_timeout() -> void:
 	queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	passed.emit()
+	call_deferred("disable_collision")
+
+func disable_collision():
+	$Area2D/CollisionShape2D.disabled = true

@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	Utils.load_settings_after_startup()
 	MusicManager.play_start_music()
 	if Utils.load_currency() == null:
 		$CurrencyMargin/CurrencyGridContainer/CurrencyAmount.text = 0
@@ -15,6 +16,7 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	Utils.save_settings_before_quitting()
 	$Button_Sound.play()
 	get_tree().quit()
 

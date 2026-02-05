@@ -35,8 +35,8 @@ func _on_crystal_spawner_timeout() -> void:
 	var crystals = crystals_scene.instantiate()
 	num_crystals = num_crystals+1
 	print("crystals:",num_crystals)
-	crystals.position.x = 1000
-	crystals.position.y = -150+randi()%350
+	crystals.position.x = 1600
+	crystals.position.y = randi()%500
 	add_child(crystals)
 	crystals.add_to_group("crystals")
 	

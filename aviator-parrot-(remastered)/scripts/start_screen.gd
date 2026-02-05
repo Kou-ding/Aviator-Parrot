@@ -2,6 +2,10 @@ extends Control
 
 func _ready():
 	MusicManager.play_start_music()
+	if Utils.load_currency() == null:
+		$CurrencyMargin/CurrencyGridContainer/CurrencyAmount.text = 0
+	else:
+		$CurrencyMargin/CurrencyGridContainer/CurrencyAmount.text = str(Utils.load_currency())
 
 func _on_play_button_pressed() -> void:
 	MusicManager.stop_music()
@@ -19,3 +23,9 @@ func _on_leaderboard_button_pressed() -> void:
 	$Button_Sound.play()
 	await $Button_Sound.finished
 	get_tree().change_scene_to_file("res://scenes/leaderboard.tscn")
+
+
+func _on_options_button_pressed() -> void:
+	$Button_Sound.play()
+	await $Button_Sound.finished
+	get_tree().change_scene_to_file("res://scenes/settings.tscn")

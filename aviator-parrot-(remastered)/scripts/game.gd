@@ -19,8 +19,11 @@ func new_game():
 	# Show Instructions Timer
 	await get_tree().create_timer(2.0).timeout
 	var instructions = get_node_or_null("TapToJump/Instructions")
+	var tap_area = get_node_or_null("TapToJump/TapArea")
 	if instructions:
 		instructions.queue_free()
+	if tap_area:
+		tap_area.queue_free()
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,14 +52,20 @@ func _on_passed() -> void:
 	
 func _on_game_over() -> void:
 	var instructions = get_node_or_null("TapToJump/Instructions")
+	var tap_area = get_node_or_null("TapToJump/TapArea")
 	if instructions:
 		instructions.queue_free()
+	if tap_area:
+		tap_area.queue_free()
 	MusicManager.stop()
 	
 	# Display Leaderboard
 	Utils.update_leaderboard(score)
 	var best_scores = Utils.load_leaderboard()
 	$GameOver/Highscores.text = str(Utils.format_numbered_list_shortVer(best_scores))
+	
+	# Update Currency
+	Utils.update_currency(score)
 	
 	# Darken bg and hide ui elements
 	darken_scene()

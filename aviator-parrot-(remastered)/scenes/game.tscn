@@ -12,6 +12,18 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vtaks"]
 atlas = ExtResource("9_0tnpc")
 region = Rect2(192, 0, 32, 32)
@@ -52,6 +64,15 @@ offset_left = 24.0
 offset_top = 184.0
 offset_right = 696.0
 offset_bottom = 1096.0
+
+[node name="TapArea" type="PanelContainer" parent="TapToJump" unique_id=616507869]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0tnpc")
 
 [node name="Instructions" type="Label" parent="TapToJump" unique_id=63200945]
 layout_mode = 1

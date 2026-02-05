@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://3dcbsjeolpjp"]
 
-[ext_resource type="Texture2D" uid="uid://di220dpy2g04j" path="res://assets/bg.png" id="1_5pab1"]
 [ext_resource type="Script" uid="uid://cd2a37nbp427v" path="res://scripts/start_screen.gd" id="1_o30b1"]
+[ext_resource type="Texture2D" uid="uid://jf0olweufrsd" path="res://assets/back.png" id="2_5pab1"]
 [ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="3_ws7p0"]
 [ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="4_r2jwc"]
+[ext_resource type="Texture2D" uid="uid://dl2n2ynsqbm5p" path="res://assets/crystal-advanced.png" id="5_hm208"]
 [ext_resource type="AudioStream" uid="uid://bl8p4l8n6cj73" path="res://assets/music/button_sfx.wav" id="6_5pab1"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ecdxc"]
-texture = ExtResource("1_5pab1")
-modulate_color = Color(0.65, 0.65, 0.65, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o30b1"]
+texture = ExtResource("2_5pab1")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm208"]
 atlas = ExtResource("4_r2jwc")
@@ -30,6 +30,10 @@ region = Rect2(128, 0, 32, 32)
 atlas = ExtResource("4_r2jwc")
 region = Rect2(256, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecdxc"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(288, 0, 32, 32)
+
 [node name="StartScreen" type="Control" unique_id=108913307]
 layout_mode = 3
 anchors_preset = 15
@@ -46,7 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ecdxc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_o30b1")
 
 [node name="Logo" type="Label" parent="." unique_id=2093236876]
 layout_mode = 1
@@ -56,9 +60,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -360.0
-offset_top = -554.0
+offset_top = -522.0
 offset_right = 360.0
-offset_bottom = -260.0
+offset_bottom = -228.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.49411765, 0.078431375, 0.2784314, 1)
@@ -136,7 +140,69 @@ expand_icon = true
 
 [node name="Button_Sound" type="AudioStreamPlayer" parent="." unique_id=660652024]
 stream = ExtResource("6_5pab1")
+bus = &"SFX"
+
+[node name="CurrencyMargin" type="MarginContainer" parent="." unique_id=1854195981]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 138.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="CurrencyGridContainer" type="GridContainer" parent="CurrencyMargin" unique_id=1892535128]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="CurrencyCoin" type="TextureRect" parent="CurrencyMargin/CurrencyGridContainer" unique_id=1373695936]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ecdxc")
+stretch_mode = 5
+
+[node name="CurrencyAmount" type="Label" parent="CurrencyMargin/CurrencyGridContainer" unique_id=1617160849]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.105882354, 0.09803922, 0.19607843, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_ws7p0")
+theme_override_font_sizes/font_size = 35
+
+[node name="Crystal1" type="TextureRect" parent="." unique_id=860087090]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -160.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_hm208")
+
+[node name="Crystal2" type="TextureRect" parent="." unique_id=748023373]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -160.0
+offset_right = 160.0
+grow_vertical = 0
+texture = ExtResource("5_hm208")
+flip_h = true
+
+[node name="Crystal3" type="TextureRect" parent="." unique_id=939646671]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_bottom = 160.0
+grow_horizontal = 0
+texture = ExtResource("5_hm208")
+flip_v = true
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

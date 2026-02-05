@@ -14,7 +14,7 @@ region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbwuq"]
 texture = ExtResource("3_tbwuq")
-region_rect = Rect2(96, 0, 32, 32)
+region_rect = Rect2(320, 0, 32, 32)
 
 [node name="GameOver" type="Control" unique_id=1469592536]
 process_mode = 2

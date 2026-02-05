@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://c3d2o3mh14ple"]
-
-[ext_resource type="AudioStream" uid="uid://bwp24ix5ww824" path="res://assets/music/JDSherbert - Nostalgia Music Pack - Retrocadia.mp3" id="1_p1osb"]
-
-[node name="Bg_Music" type="AudioStreamPlayer" unique_id=855976482]
-stream = ExtResource("1_p1osb")
-autoplay = true
-parameters/looping = true

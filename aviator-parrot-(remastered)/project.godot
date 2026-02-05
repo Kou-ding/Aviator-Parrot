@@ -19,6 +19,10 @@ run/main_scene="uid://3dcbsjeolpjp"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://d2vjbnbfxdl6f"
 
+[audio]
+
+buses/default_bus_layout="uid://pgge1lnii6yd"
+
 [autoload]
 
 MusicManager="*uid://esjuhe6p7c3e"
@@ -28,6 +32,7 @@ MusicManager="*uid://esjuhe6p7c3e"
 window/size/viewport_width=720
 window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 
 [input]

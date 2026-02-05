@@ -1,9 +1,13 @@
 extends AudioStreamPlayer
 
-const start_music = preload("uid://d18k42a01kbqf")
-const game_music = preload("uid://bwp24ix5ww824")
+var start_music = preload("uid://d18k42a01kbqf")
+var game_music = preload("uid://bwp24ix5ww824")
 
 # Called when the node enters the scene tree for the first time.
+func _ready():
+	start_music.loop = true
+	game_music.loop = true
+
 func _play_music(music: AudioStream, volume = 0.0):
 	# Do nothing if the same song is selected and is currently playing
 	if stream == music and playing:

@@ -25,10 +25,9 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w755j"]
-
 [node name="Parrot" type="CharacterBody2D" unique_id=2088057206]
-scale = Vector2(2, 2)
+position = Vector2(86, 67)
+scale = Vector2(2.9436398, 2.9436398)
 script = ExtResource("1_w755j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175572675]
@@ -41,9 +40,3 @@ polygon = PackedVector2Array(-11.5, -74.5, -11, -28.5, 15, -29.5, 10, -39.5, 15.
 
 [node name="CollisionPolygon2DF1" type="CollisionPolygon2D" parent="." unique_id=321143840]
 polygon = PackedVector2Array(6.5, -41, 13, -30.5, -6, -28, -28.5, -19, -34.5, -15.5, -66.5, 16.5, -51, 18, -28, 9, -14, 18, -8.5, 17.5, 17, 34.5, 24.5, 23, 52, 34, 71.5, 32, 72, 28, 31, -16, 23.5, -27, 23, -35.5)
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=169541893]
-
-[node name="ScoreCollisionShape" type="CollisionShape2D" parent="." unique_id=1999227423]
-position = Vector2(-15, -11)
-shape = SubResource("CircleShape2D_w755j")

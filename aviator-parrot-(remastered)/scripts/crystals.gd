@@ -1,6 +1,6 @@
 extends Node2D
 
-var crystals_speed = 450
+var crystals_speed = 700
 
 signal passed
 

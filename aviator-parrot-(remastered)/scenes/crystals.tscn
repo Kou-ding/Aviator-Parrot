@@ -10,32 +10,32 @@
 script = ExtResource("1_rf1fc")
 
 [node name="Killzone" parent="." unique_id=522540604 instance=ExtResource("2_ekfrm")]
-position = Vector2(322, 62)
+position = Vector2(316, -48)
 
 [node name="Sprite2D" type="Sprite2D" parent="Killzone" unique_id=1348883421]
 position = Vector2(-277.95554, 327.80728)
 rotation = 3.1415927
-scale = Vector2(7, 7)
+scale = Vector2(5.624422, 5.624422)
 texture = ExtResource("3_ij40q")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Killzone" unique_id=961867173]
-position = Vector2(247.31454, -38.32422)
-scale = Vector2(1.6282516, 1.6282516)
+position = Vector2(146.99997, 31)
+scale = Vector2(1.3082819, 1.3082819)
 polygon = PackedVector2Array(-270.13107, -13.506561, -211.88406, -9.285759, -124.09146, 70.90941, -108.05243, 111.42907, -128, 149, -232.98807, 177.27353, -164.61113, 335.97556, -207.66327, 491.30093, -358, 393, -393, 220, -427, 291, -502.275, 389.15762, -546.17126, 243.96213, -487.92426, 75.1302, -512.4049, 60.77949, -509.87244, 10.129913, -431.36557, -8.441597, -359.612, -5.0649643, -341.0405, -29.545586, -317.40402, -32.922234, -296.30005, -10.129921)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Killzone" unique_id=893881600]
-position = Vector2(-265.5884, 1683.2035)
-scale = Vector2(7, 7)
+position = Vector2(-268.67072, 1749.7821)
+scale = Vector2(5.5218716, 5.5218716)
 texture = ExtResource("3_ij40q")
 flip_h = true
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Killzone" unique_id=904689747]
-position = Vector2(-265.5884, 1683.2035)
-scale = Vector2(7, 7)
+position = Vector2(-268.67072, 1749.7821)
+scale = Vector2(5.5218716, 5.5218716)
 polygon = PackedVector2Array(25.576439, -61.08676, -8.846642, -37.817535, -15.769719, 2.567093, -28.462029, -19.932907, -41.92357, -36.471375, -52.272724, -5, -37.885105, 35.83632, -43.46203, 37.7594, -43.077415, 49.297867, -23.077412, 54.297867, -7.6927958, 52.18248, -3.8466413, 58.33632, 0.38412833, 58.720932, 4.4225903, 53.33632, 23.268745, 53.720932, 39.230286, 40.2594, 45.57644, 31.605545, 46.53798, 24.68248, 39.230286, 15.451706, 19.999516, 10.836319, 36.153362, -25.125229)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=791308667]
-position = Vector2(193, 324)
+position = Vector2(146, 277)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1760606884]
 position = Vector2(33, 635)

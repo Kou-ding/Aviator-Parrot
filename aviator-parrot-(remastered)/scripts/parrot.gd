@@ -32,5 +32,6 @@ func start(pos):
 
 func game_jump_button_pressed() -> void:
 	velocity.y = JUMP_VELOCITY
+	$FlapWings.play()
 	move_and_slide()
 	

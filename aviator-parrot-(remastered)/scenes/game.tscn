@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://couq435ra4k8a" path="res://scenes/pause_menu.tscn" id="8_gee14"]
 [ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="9_0tnpc"]
 [ext_resource type="AudioStream" uid="uid://cls25ho5uqltr" path="res://assets/music/game-die.mp3" id="10_vtaks"]
+[ext_resource type="AudioStream" uid="uid://bl8p4l8n6cj73" path="res://assets/music/button_sfx.wav" id="11_kvpfn"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 
@@ -156,6 +157,11 @@ grow_vertical = 0
 [node name="LoseSFX" type="AudioStreamPlayer" parent="." unique_id=90039508]
 process_mode = 3
 stream = ExtResource("10_vtaks")
+bus = &"SFX"
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="." unique_id=1584843128]
+process_mode = 2
+stream = ExtResource("11_kvpfn")
 bus = &"SFX"
 
 [connection signal="timeout" from="CrystalSpawner" to="." method="_on_crystal_spawner_timeout"]

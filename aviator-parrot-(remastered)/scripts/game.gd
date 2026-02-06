@@ -85,6 +85,7 @@ func _on_pause_button_pressed() -> void:
 	$JumpButton.hide()
 	$JumpButton.disabled = true
 	get_tree().paused = true
+	$ButtonSFX.play()
 	
 func darken_scene() -> void:
 	$Background.modulate = Color(0.5, 0.5, 0.5)

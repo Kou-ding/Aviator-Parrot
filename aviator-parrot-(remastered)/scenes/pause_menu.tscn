@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://1blfd4jgc5l3" path="res://scripts/pause_menu.gd" id="1_m0klm"]
 [ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="1_r8yp4"]
 [ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="2_m0klm"]
+[ext_resource type="AudioStream" uid="uid://bl8p4l8n6cj73" path="res://assets/music/button_sfx.wav" id="4_5d2l8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aicil"]
 atlas = ExtResource("2_m0klm")
@@ -69,6 +70,11 @@ icon = SubResource("AtlasTexture_aicil")
 [node name="Resume" type="Button" parent="Container/GridContainer" unique_id=588624130]
 layout_mode = 2
 icon = SubResource("AtlasTexture_jn4bt")
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="." unique_id=389421516]
+process_mode = 2
+stream = ExtResource("4_5d2l8")
+bus = &"SFX"
 
 [connection signal="pressed" from="Container/GridContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Container/GridContainer/Resume" to="." method="_on_resume_pressed"]

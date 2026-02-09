@@ -1,7 +1,7 @@
 # Aviator-Parrot
 A flappy bird inspired godot game.
 
-# Project Settings
+## Project Settings
 
 For pixelated games:
 ```
@@ -17,4 +17,11 @@ Display > Window > Stretch > Mode = canvas_items
 To be able to full screen the game while windowed:
 ```
 Top Bar > Game > Embedding options > Embed game on Next Play = off  
+```
+
+## Running html export locally
+
+Run a simple http server on the export's directory
+```bash
+python -m http.server 
 ```

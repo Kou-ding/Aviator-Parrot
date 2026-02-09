@@ -1,13 +1,33 @@
 extends Node2D
 
 var crystals_scene = preload("res://scenes/crystals.tscn")
+var parrot_scene = preload("res://scenes/parrot.tscn")
+var slime_scene = preload("res://scenes/slime.tscn")
 
 var score
 var num_crystals
+var Player
+var Background
 
 func new_game():
 	# Player starting position
-	$Parrot.start($StartPosition.position)
+	var Player_tag = Utils.load_Player()
+	match Player_tag:
+		"parrot":
+			Player = parrot_scene.instantiate()
+			add_child(Player)
+		"slime":
+			Player = slime_scene.instantiate()
+			add_child(Player)
+
+	var Background_tag = Utils.load_Bg()
+	match Background_tag:
+		"stary night":
+			$Background.texture = load("res://assets/bg.png")
+		"start screen":
+			$Background.texture = load("res://assets/back.png")
+	
+	Player.start($StartPosition.position)
 	# Game music
 	MusicManager.play_game_music()
 	# Hide menus
@@ -89,13 +109,13 @@ func _on_pause_button_pressed() -> void:
 	
 func darken_scene() -> void:
 	$Background.modulate = Color(0.5, 0.5, 0.5)
-	$Parrot.modulate = Color(0.5, 0.5, 0.5)
+	Player.modulate = Color(0.5, 0.5, 0.5)
 	for crystal in get_tree().get_nodes_in_group("crystals"):
 		crystal.modulate = Color(0.5, 0.5, 0.5)
 		
 func undarken_scene() -> void:
 	$Background.modulate = Color(1, 1, 1)
-	$Parrot.modulate = Color(1, 1, 1)
+	Player.modulate = Color(1, 1, 1)
 	for crystal in get_tree().get_nodes_in_group("crystals"):
 		crystal.modulate = Color(1, 1, 1)
 
@@ -107,4 +127,4 @@ func _on_unpause() -> void:
 	
 
 func _on_jump_button_pressed() -> void:
-	$Parrot.game_jump_button_pressed()
+	Player.game_jump_button_pressed()

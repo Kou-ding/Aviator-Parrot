@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://huxtlcrtmyaa"]
 
+[ext_resource type="Script" uid="uid://bsqfv220h01du" path="res://scripts/slime.gd" id="1_n6pvg"]
 [ext_resource type="Texture2D" uid="uid://dyey2aovfa5n" path="res://assets/slime.png" id="1_p2gj0"]
-[ext_resource type="AudioStream" uid="uid://h6qqjlpdbngs" path="res://assets/music/Whoosh.wav" id="2_n6pvg"]
+[ext_resource type="AudioStream" uid="uid://dpj0uqeg0aixs" path="res://assets/music/slime-jump-1.mp3" id="3_n6pvg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2gj0"]
 atlas = ExtResource("1_p2gj0")
 region = Rect2(0, 0, 640, 640)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2npkn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
+atlas = ExtResource("1_p2gj0")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6pvg"]
 atlas = ExtResource("1_p2gj0")
 region = Rect2(640, 0, 640, 640)
 
@@ -15,10 +20,13 @@ region = Rect2(640, 0, 640, 640)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_p2gj0")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pjw23")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2npkn")
+"texture": SubResource("AtlasTexture_n6pvg")
 }],
 "loop": true,
 "name": &"fly",
@@ -30,23 +38,26 @@ radius = 67.0
 height = 184.0
 
 [node name="Slime" type="CharacterBody2D" unique_id=1546066607]
+script = ExtResource("1_n6pvg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2007269362]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_fd6lc")
 animation = &"fly"
-frame = 1
-frame_progress = 0.9602157
+frame_progress = 0.61160296
 
 [node name="FlapWings" type="AudioStreamPlayer" parent="." unique_id=171446727]
-stream = ExtResource("2_n6pvg")
+stream = ExtResource("3_n6pvg")
 pitch_scale = 1.41
 bus = &"SFX"
 
-[node name="CollisionShape2DF0" type="CollisionShape2D" parent="." unique_id=976589571]
+[node name="CollisionShape2DF2" type="CollisionShape2D" parent="." unique_id=976589571]
 position = Vector2(-4, 16)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_gstla")
 
 [node name="CollisionPolygon2DF1" type="CollisionPolygon2D" parent="." unique_id=1534698209]
 polygon = PackedVector2Array(9, -97, -71, -34, -91, 29, -77, 63, -16, 92, 56, 88, 89, 46, 85, -4)
+
+[node name="CollisionPolygon2DF0" type="CollisionPolygon2D" parent="." unique_id=841068655]
+polygon = PackedVector2Array(-40, -50, -71, -25, -84, 16, -69, 60, -32, 104, 2, 118, 51, 92, 86, 31, 84, -10, 34, -49)

@@ -1,29 +1,29 @@
 [gd_scene format=3 uid="uid://ia0siinuq2au"]
 
-[ext_resource type="Texture2D" uid="uid://d3mqpa6v02ex3" path="res://assets/mc.png" id="1_qkfhc"]
 [ext_resource type="Script" uid="uid://cyod8xrikge4m" path="res://scripts/parrot.gd" id="1_w755j"]
+[ext_resource type="Texture2D" uid="uid://d3mqpa6v02ex3" path="res://assets/mc.png" id="2_i6g64"]
 [ext_resource type="AudioStream" uid="uid://h6qqjlpdbngs" path="res://assets/music/Whoosh.wav" id="3_i6g64"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w755j"]
-atlas = ExtResource("1_qkfhc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vda7l"]
+atlas = ExtResource("2_i6g64")
 region = Rect2(0, 0, 640, 640)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i6g64"]
-atlas = ExtResource("1_qkfhc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuuxd"]
+atlas = ExtResource("2_i6g64")
 region = Rect2(640, 0, 640, 640)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vda7l"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojfhj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w755j")
+"texture": SubResource("AtlasTexture_vda7l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i6g64")
+"texture": SubResource("AtlasTexture_nuuxd")
 }],
-"loop": false,
-"name": &"fly",
-"speed": 2.0
+"loop": true,
+"name": &"default",
+"speed": 5.0
 }]
 
 [node name="Parrot" type="CharacterBody2D" unique_id=2088057206]
@@ -31,10 +31,7 @@ script = ExtResource("1_w755j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175572675]
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_vda7l")
-animation = &"fly"
-frame = 1
-frame_progress = 0.50223285
+sprite_frames = SubResource("SpriteFrames_ojfhj")
 
 [node name="CollisionPolygon2DF0" type="CollisionPolygon2D" parent="." unique_id=2072600762]
 position = Vector2(0.9999981, 1.0000019)

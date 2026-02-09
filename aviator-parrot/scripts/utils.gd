@@ -5,6 +5,8 @@ class_name Utils
 const LEADERBOARD_SAVE_PATH := "user://leaderboard.save"
 const CURRENCY_SAVE_PATH := "user://currency.save"
 const SETTINGS_SAVE_PATH := "user://settings.save"
+const PLAYER_SAVE_PATH := "user://player.save"
+const BG_SAVE_PATH : = "user://bg.save"
 const MAX_SCORES := 8
 
 static func load_leaderboard() -> Array:
@@ -103,3 +105,29 @@ static func load_settings() -> Array:
 		var data = file.get_var()
 		return data
 	return [0,0]
+
+static func set_Player(player_tag):
+	var file = FileAccess.open(PLAYER_SAVE_PATH, FileAccess.WRITE)
+	if file:
+		var data = player_tag
+		file.store_var(data)
+
+static func load_Player():
+	if not FileAccess.file_exists(PLAYER_SAVE_PATH):
+		return "parrot"
+	var file = FileAccess.open(PLAYER_SAVE_PATH, FileAccess.READ)
+	var data = file.get_var()
+	return data
+	
+static func set_Bg(bg_tag):
+	var file = FileAccess.open(BG_SAVE_PATH, FileAccess.WRITE)
+	if file:
+		var data = bg_tag
+		file.store_var(data)
+
+static func load_Bg():
+	if not FileAccess.file_exists(BG_SAVE_PATH):
+		return "stary night"
+	var file = FileAccess.open(BG_SAVE_PATH, FileAccess.READ)
+	var data = file.get_var()
+	return data

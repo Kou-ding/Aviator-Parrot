@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://bjaiu5ii3ruwh"]
+
+[ext_resource type="Texture2D" uid="uid://jf0olweufrsd" path="res://assets/back.png" id="1_1l46r"]
+[ext_resource type="Script" uid="uid://b0jgkpe6v6qcd" path="res://scripts/shop.gd" id="1_8r1wq"]
+[ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="2_032fp"]
+[ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="3_2fc2m"]
+[ext_resource type="Texture2D" uid="uid://d3mqpa6v02ex3" path="res://assets/mc.png" id="5_ajxib"]
+[ext_resource type="Texture2D" uid="uid://dyey2aovfa5n" path="res://assets/slime.png" id="6_y6sft"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8r1wq"]
+texture = ExtResource("1_1l46r")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajxib"]
+atlas = ExtResource("2_032fp")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4ofw"]
+atlas = ExtResource("5_ajxib")
+region = Rect2(0, 0, 456, 424)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heatd"]
+atlas = ExtResource("6_y6sft")
+region = Rect2(720, 168, 464, 352)
+
+[node name="Shop" type="Control" unique_id=949870737]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8r1wq")
+
+[node name="Background" type="Panel" parent="." unique_id=1841599741]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8r1wq")
+
+[node name="Control" type="Control" parent="." unique_id=208774048]
+anchors_preset = 0
+offset_right = 900.0
+offset_bottom = 235.83333
+scale = Vector2(1.2, 1.2)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=566016742]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_right = 450.0
+offset_bottom = 312.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=1565676711]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 197
+
+[node name="Back" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=87098766]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = SubResource("AtlasTexture_ajxib")
+expand_icon = true
+
+[node name="ShopLabel" type="Label" parent="Control/MarginContainer/HBoxContainer" unique_id=1257718636]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.12941177, 0.12156863, 0.23921569, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_2fc2m")
+theme_override_font_sizes/font_size = 44
+text = "Shop"
+
+[node name="PlayersLabel" type="Label" parent="." unique_id=1305734627]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 279.0
+offset_right = 414.0
+offset_bottom = 419.0
+theme_override_fonts/font = ExtResource("3_2fc2m")
+theme_override_font_sizes/font_size = 50
+text = "Players"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=182781023]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 433.0
+offset_right = 981.0
+offset_bottom = 1259.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1761578082]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="parrot" type="Button" parent="ScrollContainer/GridContainer" unique_id=2024359288]
+layout_mode = 2
+theme_override_constants/icon_max_width = 250
+icon = SubResource("AtlasTexture_m4ofw")
+
+[node name="parrot2" type="Button" parent="ScrollContainer/GridContainer" unique_id=65485832]
+layout_mode = 2
+theme_override_constants/icon_max_width = 250
+icon = SubResource("AtlasTexture_m4ofw")
+
+[node name="parrot3" type="Button" parent="ScrollContainer/GridContainer" unique_id=1603341888]
+layout_mode = 2
+theme_override_constants/icon_max_width = 250
+icon = SubResource("AtlasTexture_m4ofw")
+
+[node name="parrot4" type="Button" parent="ScrollContainer/GridContainer" unique_id=1341950927]
+layout_mode = 2
+theme_override_constants/icon_max_width = 250
+icon = SubResource("AtlasTexture_m4ofw")
+
+[node name="parrot5" type="Button" parent="ScrollContainer/GridContainer" unique_id=2090593977]
+layout_mode = 2
+theme_override_constants/icon_max_width = 250
+icon = SubResource("AtlasTexture_m4ofw")
+
+[node name="parrot6" type="Button" parent="ScrollContainer/GridContainer" unique_id=147836917]
+layout_mode = 2
+theme_override_constants/icon_max_width = 250
+icon = SubResource("AtlasTexture_m4ofw")
+
+[node name="BackgroundsLabel" type="Label" parent="." unique_id=1600012057]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 1272.0
+offset_right = 648.0
+offset_bottom = 1412.0
+theme_override_fonts/font = ExtResource("3_2fc2m")
+theme_override_font_sizes/font_size = 50
+text = "Backgrounds"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="." unique_id=609579291]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 1434.0
+offset_right = 984.0
+offset_bottom = 2260.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer2" unique_id=730883167]
+layout_mode = 2
+columns = 3
+
+[node name="Button4" type="Button" parent="ScrollContainer2/GridContainer" unique_id=1008675]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="ScrollContainer2/GridContainer" unique_id=1169449443]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="ScrollContainer2/GridContainer" unique_id=1111327417]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer2/GridContainer" unique_id=986831400]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=60443944]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 596.0
+offset_right = 996.0
+offset_bottom = 1770.0
+
+[node name="ItemName" type="Label" parent="PanelContainer" unique_id=902904050]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_2fc2m")
+theme_override_font_sizes/font_size = 50
+text = "Rimuru"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=229695337]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer" unique_id=1372469494]
+layout_mode = 2
+texture = SubResource("AtlasTexture_heatd")
+stretch_mode = 5
+
+[node name="BuySelect" type="Button" parent="PanelContainer" unique_id=1551567002]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_2fc2m")
+theme_override_font_sizes/font_size = 50
+text = "BUY"

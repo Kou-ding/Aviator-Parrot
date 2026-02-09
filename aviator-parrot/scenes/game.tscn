@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://dyphc34eroiyt"]
 
 [ext_resource type="Script" uid="uid://dwpo2d3ckaqc6" path="res://scripts/game.gd" id="1_lnu2h"]
-[ext_resource type="Texture2D" uid="uid://di220dpy2g04j" path="res://assets/bg.png" id="3_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://ia0siinuq2au" path="res://scenes/parrot.tscn" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://corxrll4weuk2" path="res://scenes/game_over.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bgniix12i2k4n" path="res://scenes/killzone.tscn" id="5_kvpfn"]
 [ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="6_dinhu"]
@@ -42,12 +40,9 @@ script = ExtResource("1_lnu2h")
 [node name="Background" type="Sprite2D" parent="." unique_id=1555652795]
 position = Vector2(549.74994, 1171.9999)
 scale = Vector2(1.4627777, 1.4627775)
-texture = ExtResource("3_0tnpc")
 
 [node name="StartPosition" type="Marker2D" parent="." unique_id=279717237]
 position = Vector2(368, 1072)
-
-[node name="Parrot" parent="." unique_id=2088057206 instance=ExtResource("4_vtaks")]
 
 [node name="CrystalSpawner" type="Timer" parent="." unique_id=1436650371]
 wait_time = 2.5

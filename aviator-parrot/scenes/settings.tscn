@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://cbb5t4xwcp4cs"]
+
+[ext_resource type="Script" uid="uid://6xn1pcfrft78" path="res://scripts/settings.gd" id="1_es4n0"]
+[ext_resource type="Texture2D" uid="uid://jf0olweufrsd" path="res://assets/back.png" id="2_gis3k"]
+[ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="3_83j8s"]
+[ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="4_gjs24"]
+[ext_resource type="Texture2D" uid="uid://u3ke3dljd6t6" path="res://assets/slider_0001.png" id="5_4ppmf"]
+[ext_resource type="Texture2D" uid="uid://cn8fo2hck753j" path="res://assets/toggle_0002.png" id="5_83j8s"]
+[ext_resource type="AudioStream" uid="uid://bl8p4l8n6cj73" path="res://assets/music/button_sfx.wav" id="5_am25x"]
+[ext_resource type="Texture2D" uid="uid://kuxjcnyvsjy4" path="res://assets/toggle_0001.png" id="6_gjs24"]
+[ext_resource type="Texture2D" uid="uid://cs72xnb3mr4n5" path="res://assets/slider_0002.png" id="6_uhhto"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ppmf"]
+texture = ExtResource("2_gis3k")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqwn7"]
+atlas = ExtResource("5_4ppmf")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe2nd"]
+atlas = ExtResource("6_uhhto")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_es4n0"]
+color = Color(0.105882354, 0.09803922, 0.19607843, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gis3k"]
+color = Color(1, 1, 1, 1)
+thickness = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g033"]
+atlas = ExtResource("5_4ppmf")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01roj"]
+atlas = ExtResource("6_uhhto")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am25x"]
+atlas = ExtResource("5_83j8s")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ppmf"]
+atlas = ExtResource("6_gjs24")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhhto"]
+atlas = ExtResource("4_gjs24")
+region = Rect2(224, 0, 32, 32)
+
+[node name="Settings" type="Control" unique_id=314318622]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_es4n0")
+
+[node name="Background" type="Panel" parent="." unique_id=1304321833]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4ppmf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2060386351]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -354.0
+offset_right = 266.0
+offset_bottom = 354.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(268, 354)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2143469624]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Music" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=2029399406]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.12941177, 0.12156863, 0.23921569, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_83j8s")
+theme_override_font_sizes/font_size = 30
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/HBoxContainer" unique_id=206664544]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_icons/grabber = SubResource("AtlasTexture_wqwn7")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_oe2nd")
+theme_override_styles/slider = SubResource("StyleBoxLine_es4n0")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_gis3k")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=960559485]
+layout_mode = 2
+theme_override_constants/separation = 90
+
+[node name="FX" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1189522577]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.12941177, 0.12156863, 0.23921569, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_83j8s")
+theme_override_font_sizes/font_size = 30
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2" unique_id=121185574]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_icons/grabber = SubResource("AtlasTexture_1g033")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_01roj")
+theme_override_styles/slider = SubResource("StyleBoxLine_es4n0")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_gis3k")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1333897666]
+layout_mode = 2
+
+[node name="Fullscreen" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=1436991323]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.12941177, 0.12156863, 0.23921569, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_83j8s")
+theme_override_font_sizes/font_size = 30
+text = "Fullscreen"
+
+[node name="FullscreenToggle" type="CheckButton" parent="VBoxContainer/HBoxContainer3" unique_id=669563189]
+custom_minimum_size = Vector2(97.615, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/checked = SubResource("AtlasTexture_am25x")
+theme_override_icons/unchecked = SubResource("AtlasTexture_4ppmf")
+
+[node name="Button_Sound" type="AudioStreamPlayer" parent="." unique_id=558923395]
+stream = ExtResource("5_am25x")
+bus = &"SFX"
+
+[node name="Control" type="Control" parent="." unique_id=2137049641]
+anchors_preset = 0
+offset_right = 900.0
+offset_bottom = 311.66666
+scale = Vector2(1.2, 1.2)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1737331364]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_right = 450.0
+offset_bottom = 312.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=253886646]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 197
+
+[node name="Back" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=238867525]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = SubResource("AtlasTexture_uhhto")
+expand_icon = true
+
+[node name="SettingsLabel" type="Label" parent="Control/MarginContainer/HBoxContainer" unique_id=442128238]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.12941177, 0.12156863, 0.23921569, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_83j8s")
+theme_override_font_sizes/font_size = 44
+text = "Settings"
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer3/FullscreenToggle" to="." method="_on_fullscreen_toggle_toggled"]
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]

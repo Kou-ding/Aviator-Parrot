@@ -1,236 +1,170 @@
-[gd_scene load_steps=24 format=3 uid="uid://40alu5xohgyc"]
+[gd_scene format=3 uid="uid://dyphc34eroiyt"]
 
-[ext_resource type="Script" uid="uid://cl0kjpkpkqsni" path="res://scripts/game.gd" id="1_u5sy4"]
-[ext_resource type="Texture2D" uid="uid://bibv50g0qndlc" path="res://assets/background/aviator-bird-background.png" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://cyx00ihwjaeun" path="res://scenes/parrot.tscn" id="2_lnu2h"]
-[ext_resource type="Script" uid="uid://6gbf2u1ksv27" path="res://scripts/pause_button.gd" id="3_gee14"]
-[ext_resource type="Script" uid="uid://b3pftqlc47ec2" path="res://scripts/parrot.gd" id="3_iywne"]
-[ext_resource type="PackedScene" uid="uid://s21q2ldqpv7h" path="res://scenes/pipe.tscn" id="6_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://c055ffm4cnwu6" path="res://scenes/game_over.tscn" id="6_gee14"]
-[ext_resource type="Texture2D" uid="uid://cdxeaytbcnd3c" path="res://assets/flappybird/button_pause.png" id="6_u5sy4"]
-[ext_resource type="Texture2D" uid="uid://xblk5fcyvasb" path="res://assets/flappybird/pipe_red_top.png" id="7_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://cnpqbchfyvdpg" path="res://scenes/killzone.tscn" id="7_u5sy4"]
-[ext_resource type="Texture2D" uid="uid://dfqqel3ksb4ya" path="res://assets/flappybird/pipe_red_bottom.png" id="8_dinhu"]
-[ext_resource type="Texture2D" uid="uid://c7mt5dqi5rjbc" path="res://assets/flappybird/label_flappy_bird.png" id="10_kvuet"]
-[ext_resource type="Texture2D" uid="uid://57b2v5rkvgds" path="res://assets/flappybird/button_resume.png" id="11_trtic"]
-[ext_resource type="Script" uid="uid://bjvhyrsclt48w" path="res://scripts/game_state.gd" id="14_trtic"]
+[ext_resource type="Script" uid="uid://dwpo2d3ckaqc6" path="res://scripts/game.gd" id="1_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://di220dpy2g04j" path="res://assets/bg.png" id="3_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://ia0siinuq2au" path="res://scenes/parrot.tscn" id="4_vtaks"]
+[ext_resource type="PackedScene" uid="uid://corxrll4weuk2" path="res://scenes/game_over.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://bgniix12i2k4n" path="res://scenes/killzone.tscn" id="5_kvpfn"]
+[ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="6_dinhu"]
+[ext_resource type="Script" uid="uid://ccrlaex51810v" path="res://scripts/score.gd" id="7_kvuet"]
+[ext_resource type="PackedScene" uid="uid://couq435ra4k8a" path="res://scenes/pause_menu.tscn" id="8_gee14"]
+[ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="9_0tnpc"]
+[ext_resource type="AudioStream" uid="uid://cls25ho5uqltr" path="res://assets/music/game-die.mp3" id="10_vtaks"]
+[ext_resource type="AudioStream" uid="uid://bl8p4l8n6cj73" path="res://assets/music/button_sfx.wav" id="11_kvpfn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
-size = Vector2(1079.5, 84)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
-distance = -973.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tnpc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
-size = Vector2(36.8333, 226.5)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtaks"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_trtic"]
-size = Vector2(156, 960)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvpfn"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvuet"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtaks"]
+atlas = ExtResource("9_0tnpc")
+region = Rect2(192, 0, 32, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir15t"]
+[node name="Game" type="Node2D" unique_id=798599299]
+script = ExtResource("1_lnu2h")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gee14"]
+[node name="Background" type="Sprite2D" parent="." unique_id=1555652795]
+position = Vector2(549.74994, 1171.9999)
+scale = Vector2(1.4627777, 1.4627775)
+texture = ExtResource("3_0tnpc")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ca42v"]
+[node name="StartPosition" type="Marker2D" parent="." unique_id=279717237]
+position = Vector2(368, 1072)
 
-[node name="Game" type="Node2D"]
-script = ExtResource("1_u5sy4")
+[node name="Parrot" parent="." unique_id=2088057206 instance=ExtResource("4_vtaks")]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = -1
-offset_left = -1972.0
-offset_top = 0.999999
-offset_right = 1868.0
-offset_bottom = 2163.0
-scale = Vector2(1.29545, 1.29545)
-texture = ExtResource("1_yqjtg")
-stretch_mode = 1
+[node name="CrystalSpawner" type="Timer" parent="." unique_id=1436650371]
+wait_time = 2.5
+autostart = true
 
-[node name="Parrot" parent="." instance=ExtResource("2_lnu2h")]
-position = Vector2(550, 970)
-script = ExtResource("3_iywne")
+[node name="Killzone" parent="." unique_id=522540604 instance=ExtResource("5_kvpfn")]
+position = Vector2(480, 2040)
 
-[node name="TouchToJump" type="TouchScreenButton" parent="."]
-position = Vector2(540, 1117)
-scale = Vector2(53.6423, 58.3946)
-shape = SubResource("RectangleShape2D_iywne")
+[node name="Floor" type="CollisionShape2D" parent="Killzone" unique_id=1653231303]
+position = Vector2(80, 8)
+shape = SubResource("WorldBoundaryShape2D_lbhrr")
 
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(539, 1440)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(1, 335)
-shape = SubResource("RectangleShape2D_p57ef")
-
-[node name="Killzone" parent="Floor" instance=ExtResource("7_u5sy4")]
-position = Vector2(263, -494)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Killzone"]
-position = Vector2(-258, -188)
-shape = SubResource("WorldBoundaryShape2D_p57ef")
-
-[node name="Pipe" parent="." instance=ExtResource("6_0tnpc")]
-position = Vector2(675, 5)
-
-[node name="UpperPipe2" type="StaticBody2D" parent="Pipe"]
-position = Vector2(526, 848)
-scale = Vector2(0.899354, 0.899354)
-
-[node name="UpperPipeSprite" type="Sprite2D" parent="Pipe/UpperPipe2"]
-position = Vector2(0, -729)
-scale = Vector2(8.485, 8.485)
-texture = ExtResource("7_kvpfn")
-
-[node name="Killzone" parent="Pipe/UpperPipe2" instance=ExtResource("7_u5sy4")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe/UpperPipe2/Killzone"]
-position = Vector2(0, -729)
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_kvuet")
-
-[node name="BottomPipe2" type="StaticBody2D" parent="Pipe"]
-position = Vector2(525, 998)
-scale = Vector2(1.27071, 1.27071)
-
-[node name="BottomPipeSprite" type="Sprite2D" parent="Pipe/BottomPipe2"]
-position = Vector2(0, 660.98)
-scale = Vector2(6, 6)
-texture = ExtResource("8_dinhu")
-
-[node name="Killzone" parent="Pipe/BottomPipe2" instance=ExtResource("7_u5sy4")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe/BottomPipe2/Killzone"]
-position = Vector2(0, 661)
-shape = SubResource("RectangleShape2D_trtic")
-
-[node name="Pipe2" parent="." instance=ExtResource("6_0tnpc")]
-position = Vector2(1410, -236)
-
-[node name="UpperPipe2" type="StaticBody2D" parent="Pipe2"]
-position = Vector2(526, 848)
-scale = Vector2(0.899354, 0.899354)
-
-[node name="UpperPipeSprite" type="Sprite2D" parent="Pipe2/UpperPipe2"]
-position = Vector2(0, -729)
-scale = Vector2(8.485, 8.485)
-texture = ExtResource("7_kvpfn")
-
-[node name="Killzone" parent="Pipe2/UpperPipe2" instance=ExtResource("7_u5sy4")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe2/UpperPipe2/Killzone"]
-position = Vector2(0, -729)
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_kvuet")
-
-[node name="BottomPipe2" type="StaticBody2D" parent="Pipe2"]
-position = Vector2(525, 998)
-scale = Vector2(1.27071, 1.27071)
-
-[node name="BottomPipeSprite" type="Sprite2D" parent="Pipe2/BottomPipe2"]
-position = Vector2(0, 660.98)
-scale = Vector2(6, 6)
-texture = ExtResource("8_dinhu")
-
-[node name="Killzone" parent="Pipe2/BottomPipe2" instance=ExtResource("7_u5sy4")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe2/BottomPipe2/Killzone"]
-position = Vector2(0, 661)
-shape = SubResource("RectangleShape2D_trtic")
-
-[node name="GameOver" parent="." instance=ExtResource("6_gee14")]
-
-[node name="MainMenu" type="Control" parent="."]
+[node name="TapToJump" type="Control" parent="." unique_id=1029073387]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 24.0
+offset_top = 184.0
+offset_right = 1048.0
+offset_bottom = 1984.0
 
-[node name="GameName" type="Sprite2D" parent="MainMenu"]
-position = Vector2(535, 601)
-scale = Vector2(9.12436, 9.12436)
-texture = ExtResource("10_kvuet")
-
-[node name="StartButton" type="Button" parent="MainMenu"]
-layout_mode = 0
-offset_left = 417.0
-offset_top = 1161.0
-offset_right = 438.0
-offset_bottom = 1183.0
-scale = Vector2(17.227, 17.227)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_kvuet")
-icon = ExtResource("11_trtic")
-
-[node name="TouchScreenStartButton" type="TouchScreenButton" parent="MainMenu/StartButton"]
-position = Vector2(6.55948, 10.8551)
-scale = Vector2(0.716273, 0.788971)
-shape = SubResource("RectangleShape2D_ir15t")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Pause" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
+[node name="TapArea" type="PanelContainer" parent="TapToJump" unique_id=616507869]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = 567.0
-offset_top = 934.0
-offset_right = 567.0
-offset_bottom = 934.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0tnpc")
+
+[node name="Instructions" type="Label" parent="TapToJump" unique_id=63200945]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -27.0
+offset_right = 116.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.105882354, 0.09803922, 0.19607843, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("6_dinhu")
+theme_override_font_sizes/font_size = 30
+text = "Tap to jump"
+
+[node name="JumpButton" type="Button" parent="." unique_id=1799554950]
+z_index = 1
+offset_left = 8.0
+offset_top = 168.0
+offset_right = 1064.0
+offset_bottom = 2008.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0tnpc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vtaks")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="PauseButton" type="Button" parent="." unique_id=2127580544]
+z_index = 2
+custom_minimum_size = Vector2(190, 0)
+offset_left = 830.0
+offset_top = 60.0
+offset_right = 1020.0
+offset_bottom = 248.0
 grow_horizontal = 0
-script = ExtResource("3_gee14")
+size_flags_horizontal = 8
+icon = SubResource("AtlasTexture_vtaks")
+icon_alignment = 2
+expand_icon = true
 
-[node name="PauseButton" type="Button" parent="CanvasLayer/Pause"]
-layout_mode = 0
-offset_left = -793.0
-offset_top = -956.0
-offset_right = -772.0
-offset_bottom = -934.0
-scale = Vector2(14.8173, 14.9121)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_gee14")
-keep_pressed_outside = true
-icon = ExtResource("6_u5sy4")
+[node name="Score" type="Label" parent="." unique_id=765185474]
+z_index = 1
+offset_left = -112.0
+offset_top = 232.0
+offset_right = 1208.0
+offset_bottom = 420.0
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("6_dinhu")
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 1
+script = ExtResource("7_kvuet")
 
-[node name="TouchScreenPauseButton" type="TouchScreenButton" parent="CanvasLayer/Pause/PauseButton"]
-position = Vector2(6.41142, 10.9978)
-scale = Vector2(0.707865, 0.691589)
-shape = SubResource("RectangleShape2D_ca42v")
+[node name="GameOver" parent="." unique_id=1469592536 instance=ExtResource("5_iywne")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 440.0
+offset_top = 752.0
+offset_right = 440.0
+offset_bottom = 752.0
+grow_vertical = 1
+pivot_offset = Vector2(516, 1132)
 
-[node name="GameState" type="Node" parent="."]
-script = ExtResource("14_trtic")
+[node name="PauseMenu" parent="." unique_id=1796569766 instance=ExtResource("8_gee14")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 536.0
+offset_top = 1024.0
+offset_right = 536.0
+offset_bottom = 1024.0
+grow_horizontal = 1
+grow_vertical = 0
 
-[connection signal="game_over" from="Floor/Killzone" to="GameOver" method="_on_killzone_game_over"]
-[connection signal="game_over" from="Pipe/UpperPipe2/Killzone" to="GameOver" method="_on_killzone_game_over"]
-[connection signal="game_over" from="Pipe/BottomPipe2/Killzone" to="GameOver" method="_on_killzone_game_over"]
-[connection signal="game_over" from="Pipe2/UpperPipe2/Killzone" to="GameOver" method="_on_killzone_game_over"]
-[connection signal="game_over" from="Pipe2/BottomPipe2/Killzone" to="GameOver" method="_on_killzone_game_over"]
-[connection signal="restart" from="GameOver" to="." method="_on_game_over_restart"]
-[connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MainMenu/StartButton/TouchScreenStartButton" to="." method="_on_touch_screen_start_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause/PauseButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause/PauseButton" to="CanvasLayer/Pause" method="_on_pause_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause/PauseButton/TouchScreenPauseButton" to="CanvasLayer/Pause" method="_on_touch_screen_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause/PauseButton/TouchScreenPauseButton" to="CanvasLayer/Pause" method="_on_touch_screen_pause_button_pressed"]
+[node name="LoseSFX" type="AudioStreamPlayer" parent="." unique_id=90039508]
+process_mode = 3
+stream = ExtResource("10_vtaks")
+bus = &"SFX"
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="." unique_id=1584843128]
+process_mode = 2
+stream = ExtResource("11_kvpfn")
+bus = &"SFX"
+
+[connection signal="timeout" from="CrystalSpawner" to="." method="_on_crystal_spawner_timeout"]
+[connection signal="game_over" from="Killzone" to="." method="_on_killzone_game_over"]
+[connection signal="pressed" from="JumpButton" to="." method="_on_jump_button_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

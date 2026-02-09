@@ -1,35 +1,52 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyx00ihwjaeun"]
+[gd_scene format=3 uid="uid://ia0siinuq2au"]
 
-[ext_resource type="Texture2D" uid="uid://qwo2pcksbni4" path="res://assets/flappybird/bird_blue_0.png" id="1_i6g64"]
-[ext_resource type="Texture2D" uid="uid://c2tlfdqsbau21" path="res://assets/flappybird/bird_blue_1.png" id="2_vda7l"]
-[ext_resource type="Texture2D" uid="uid://vjj8ttyyxa77" path="res://assets/flappybird/bird_blue_2.png" id="3_nuuxd"]
+[ext_resource type="Texture2D" uid="uid://d3mqpa6v02ex3" path="res://assets/mc.png" id="1_qkfhc"]
+[ext_resource type="Script" uid="uid://cyod8xrikge4m" path="res://scripts/parrot.gd" id="1_w755j"]
+[ext_resource type="AudioStream" uid="uid://h6qqjlpdbngs" path="res://assets/music/Whoosh.wav" id="3_i6g64"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ojfhj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w755j"]
+atlas = ExtResource("1_qkfhc")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6g64"]
+atlas = ExtResource("1_qkfhc")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vda7l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_i6g64")
+"texture": SubResource("AtlasTexture_w755j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_vda7l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_nuuxd")
+"texture": SubResource("AtlasTexture_i6g64")
 }],
-"loop": true,
-"name": &"default",
-"speed": 5.0
+"loop": false,
+"name": &"fly",
+"speed": 2.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_82lbb"]
-radius = 56.3205
+[node name="Parrot" type="CharacterBody2D" unique_id=2088057206]
+script = ExtResource("1_w755j")
 
-[node name="Parrot" type="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175572675]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_vda7l")
+animation = &"fly"
+frame = 1
+frame_progress = 0.50223285
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(10.085, 10.085)
-sprite_frames = SubResource("SpriteFrames_ojfhj")
-frame_progress = 0.556671
+[node name="CollisionPolygon2DF0" type="CollisionPolygon2D" parent="." unique_id=2072600762]
+position = Vector2(0.9999981, 1.0000019)
+scale = Vector2(2.007221, 2.007221)
+polygon = PackedVector2Array(-11.5, -74.5, -11, -28.5, 15, -29.5, 10, -39.5, 15.5, -37, 21, -32.5, 26.5, -17, 15, -15.5, 0, -2, -18.5, 4, -24.5, 15.5, -53.5, 16, -69.5, 9, -56, 7.5, -47, -3, -64.5, -29.5, -64.5, -54, -60, -62, -28.5, -31, -23.5, -55)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_82lbb")
+[node name="CollisionPolygon2DF1" type="CollisionPolygon2D" parent="." unique_id=321143840]
+position = Vector2(0, 0.9999999)
+scale = Vector2(1.881441, 1.8814416)
+polygon = PackedVector2Array(6.5, -41, 13, -30.5, -6, -28, -28.5, -19, -34.5, -15.5, -66.5, 16.5, -51, 18, -28, 9, -14, 18, -8.5, 17.5, 17, 34.5, 24.5, 23, 52, 34, 71.5, 32, 72, 28, 31, -16, 23.5, -27, 23, -35.5)
+
+[node name="FlapWings" type="AudioStreamPlayer" parent="." unique_id=1206731308]
+stream = ExtResource("3_i6g64")
+pitch_scale = 1.41
+bus = &"SFX"

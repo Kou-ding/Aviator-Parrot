@@ -15,21 +15,29 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Aviator Parrot"
-run/main_scene="uid://40alu5xohgyc"
-config/features=PackedStringArray("4.6", "Mobile")
-config/icon="uid://dd0be1y15gcsl"
+run/main_scene="uid://3dcbsjeolpjp"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+config/icon="uid://cnj4vtcgskern"
+
+[audio]
+
+buses/default_bus_layout="uid://pgge1lnii6yd"
 
 [autoload]
 
-GameState="*res://scripts/game_state.gd"
+MusicManager="*uid://esjuhe6p7c3e"
 
 [display]
 
 window/size/viewport_width=1080
-window/size/viewport_height=1920
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/size/viewport_height=2340
+window/stretch/mode="canvas_items"
 window/handheld/orientation=1
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 
@@ -39,13 +47,9 @@ jump={
 ]
 }
 
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
-pointing/emulate_mouse_from_touch=false
-
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

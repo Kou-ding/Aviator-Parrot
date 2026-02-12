@@ -19,9 +19,12 @@ func _physics_process(delta: float) -> void:
 			$CollisionPolygon2DF1.disabled = false
 	
 	# Handle jump
-	if Input.is_action_just_pressed("jump"):	
-		velocity.y = JUMP_VELOCITY
-		$FlapWings.play()
+	if Input.is_action_just_pressed("jump"):
+		if position.y>0:
+			velocity.y = JUMP_VELOCITY
+			$FlapWings.play()
+	
+	# A default collision/sliding response
 	move_and_slide()
 
 func start(pos):
@@ -31,7 +34,6 @@ func start(pos):
 	$CollisionPolygon2DF1.disabled = false
 
 func game_jump_button_pressed() -> void:
-	velocity.y = JUMP_VELOCITY
-	$FlapWings.play()
-	move_and_slide()
-	
+	if position.y>0:
+		velocity.y = JUMP_VELOCITY
+		$FlapWings.play()

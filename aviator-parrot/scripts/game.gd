@@ -22,10 +22,11 @@ func new_game():
 
 	var Background_tag = Utils.load_Bg()
 	match Background_tag:
-		"stary night":
+		"moon":
 			$Background.texture = load("res://assets/bg.png")
-		"start screen":
+		"space":
 			$Background.texture = load("res://assets/back.png")
+			$Background.scale = Vector2(1.8,1.8)
 	
 	Player.start($StartPosition.position)
 	# Game music

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c2tyrjvqui8yk" path="res://assets/simple_buttons.png" id="2_032fp"]
 [ext_resource type="FontFile" uid="uid://dd1l0gau24nyb" path="res://assets/Pixeled.ttf" id="3_2fc2m"]
 [ext_resource type="Texture2D" uid="uid://d3mqpa6v02ex3" path="res://assets/mc.png" id="5_ajxib"]
+[ext_resource type="Texture2D" uid="uid://ccfcrb8oiud07" path="res://assets/selected.png" id="6_heatd"]
 [ext_resource type="Texture2D" uid="uid://pjkmtwf2sosq" path="res://assets/lock.png" id="6_m4ofw"]
 [ext_resource type="Texture2D" uid="uid://dyey2aovfa5n" path="res://assets/slime.png" id="6_y6sft"]
 [ext_resource type="Texture2D" uid="uid://di220dpy2g04j" path="res://assets/bg.png" id="8_heatd"]
@@ -138,6 +139,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1v8qu")
 
+[node name="selected" type="TextureRect" parent="ScrollContainer/GridContainer/parrot" unique_id=1854029006]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -193.5
+offset_bottom = -180.45615
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("6_heatd")
+
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/GridContainer/parrot" unique_id=1362303614]
 layout_mode = 1
 anchors_preset = 8
@@ -183,6 +196,18 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
 texture = ExtResource("6_m4ofw")
+
+[node name="selected" type="TextureRect" parent="ScrollContainer/GridContainer/slime" unique_id=1033308842]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -193.5
+offset_bottom = -180.45615
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("6_heatd")
 
 [node name="BackgroundsLabel" type="Label" parent="." unique_id=1600012057]
 layout_mode = 0
@@ -241,6 +266,18 @@ grow_vertical = 2
 scale = Vector2(4, 4)
 texture = ExtResource("6_m4ofw")
 
+[node name="selected" type="TextureRect" parent="ScrollContainer2/GridContainer/moon" unique_id=239931703]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -194.0
+offset_bottom = -339.69446
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("6_heatd")
+
 [node name="space" type="Button" parent="ScrollContainer2/GridContainer" unique_id=986831400]
 layout_mode = 2
 theme_override_constants/icon_max_width = 250
@@ -275,6 +312,18 @@ grow_vertical = 2
 scale = Vector2(4, 4)
 texture = ExtResource("6_m4ofw")
 
+[node name="selected" type="TextureRect" parent="ScrollContainer2/GridContainer/space" unique_id=472580351]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -194.0
+offset_bottom = -339.69446
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("6_heatd")
+
 [node name="DetailsPanel" type="PanelContainer" parent="." unique_id=60443944]
 layout_mode = 0
 offset_left = 87.0
@@ -298,13 +347,14 @@ horizontal_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="DetailsPanel" unique_id=229695337]
 layout_mode = 2
 theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
+theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_bottom = 200
 
 [node name="ItemIcon" type="TextureRect" parent="DetailsPanel/MarginContainer" unique_id=1372469494]
 layout_mode = 2
 texture = SubResource("AtlasTexture_heatd")
+expand_mode = 4
 stretch_mode = 5
 
 [node name="ExitMargin" type="MarginContainer" parent="DetailsPanel" unique_id=1792417106]
@@ -345,6 +395,15 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_7mqwv")
 expand_mode = 2
 stretch_mode = 4
+
+[node name="Error" type="Label" parent="DetailsPanel" unique_id=859437977]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_2fc2m")
+theme_override_font_sizes/font_size = 40
+text = "Not enough currency"
+horizontal_alignment = 1
 
 [node name="Button_Sound" type="AudioStreamPlayer" parent="." unique_id=614647954]
 stream = ExtResource("9_m4ofw")

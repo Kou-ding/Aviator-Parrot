@@ -8,6 +8,7 @@ const SETTINGS_SAVE_PATH := "user://settings.save"
 const PLAYER_SAVE_PATH := "user://player.save"
 const BG_SAVE_PATH := "user://bg.save"
 const OWNED_PLAYERS_SAVE_PATH := "user://owned_players.save"
+const OWNED_BGS_SAVE_PATH := "user://owned_bgs.save"
 const MAX_SCORES := 8
 
 # Leaderboard data
@@ -151,8 +152,6 @@ static func player_is_owned(player_tag):
 	print("Player list")
 	print(players_list)
 	for player in players_list:
-		print("player_tag:" + player_tag)
-		print("player:"+player)
 		if player == player_tag:
 			return true
 	return false
@@ -165,15 +164,14 @@ static func player_is_selected(player_tag):
 
 static func buy_Player(player_tag):
 	var owned_players = owned_Players()
-	owned_players = [owned_players]
 	# Add the new player if not already owned
 	if player_tag not in owned_players:
-		owned_players.append(player_tag)
-
-	var file = FileAccess.open(OWNED_PLAYERS_SAVE_PATH, FileAccess.WRITE)
-	if file:
-		file.store_var(owned_players)
-	file.close()
+		var file = FileAccess.open(OWNED_PLAYERS_SAVE_PATH, FileAccess.READ_WRITE)
+		if file:
+			# Go to the end of the file
+			file.seek_end()
+			file.store_line(player_tag)
+		file.close()
 
 # Bg
 static func set_Bg(bg_tag):
@@ -185,8 +183,53 @@ static func set_Bg(bg_tag):
 
 static func load_Bg():
 	if not FileAccess.file_exists(BG_SAVE_PATH):
-		return "stary night"
+		return "moon"
 	var file = FileAccess.open(BG_SAVE_PATH, FileAccess.READ)
 	var data = file.get_var()
 	file.close()
 	return data
+
+static func owned_Bgs():
+	# If trying to access owned players for the first time add the default character
+	if not FileAccess.file_exists(OWNED_BGS_SAVE_PATH):
+		var file_w = FileAccess.open(OWNED_BGS_SAVE_PATH, FileAccess.WRITE)
+		if file_w:
+			var default_bg = "moon"
+			file_w.store_line(default_bg)
+			file_w.close()
+	# Return owned players
+	var file_r = FileAccess.open(OWNED_BGS_SAVE_PATH, FileAccess.READ)
+	var owned_bgs = []
+	var bg = ""
+	while file_r.get_position()<file_r.get_length():
+		bg = file_r.get_line()
+		if bg != "":
+			owned_bgs.append(bg)
+	return owned_bgs
+
+
+static func bg_is_owned(bg_tag):
+	var bgs_list = owned_Bgs()
+	print("Bg list")
+	print(bgs_list)
+	for bg in bgs_list:
+		if bg == bg_tag:
+			return true
+	return false
+
+static func bg_is_selected(bg_tag):
+	var current_bg = load_Bg()
+	if bg_tag == current_bg:
+		return true
+	return false
+
+static func buy_Bg(bg_tag):
+	var owned_bgs = owned_Bgs()
+	# Add the new player if not already owned
+	if bg_tag not in owned_bgs:
+		var file = FileAccess.open(OWNED_BGS_SAVE_PATH, FileAccess.READ_WRITE)
+		if file:
+			# Go to the end of the file
+			file.seek_end()
+			file.store_line(bg_tag)
+		file.close()
